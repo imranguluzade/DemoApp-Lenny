@@ -17,10 +17,34 @@
   letter-spacing: $letter-spacing;
 }
 
+@mixin h1-xs(
+  $font-size: 34px,
+  $font-weight: 600,
+  $line-height: 41px,
+  $letter-spacing: -0.2px
+) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+}
+
 @mixin h2(
   $font-size: 38px,
   $font-weight: 600,
   $line-height: 53px,
+  $letter-spacing: -0.2px
+) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+}
+
+@mixin h2-xs(
+  $font-size: 18px,
+  $font-weight: 600,
+  $line-height: 25px,
   $letter-spacing: -0.2px
 ) {
   font-size: $font-size;
@@ -41,6 +65,18 @@
   letter-spacing: $letter-spacing;
 }
 
+@mixin h3-xs(
+  $font-size: 14px,
+  $font-weight: 600,
+  $line-height: 20px,
+  $letter-spacing: -0.2px
+) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+}
+
 @mixin h4(
   $font-size: 28px,
   $font-weight: 600,
@@ -53,10 +89,34 @@
   letter-spacing: $letter-spacing;
 }
 
+@mixin h4(
+  $font-size: 12px,
+  $font-weight: 600,
+  $line-height: 17px,
+  $letter-spacing: -0.2px
+) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+}
+
 @mixin h5(
   $font-size: 24px,
   $font-weight: 600,
   $line-height: 34px,
+  $letter-spacing: -0.2px
+) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+}
+
+@mixin h5-xs(
+  $font-size: 10px,
+  $font-weight: 600,
+  $line-height: 14px,
   $letter-spacing: -0.2px
 ) {
   font-size: $font-size;
