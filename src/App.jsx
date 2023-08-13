@@ -8,6 +8,7 @@ const App = () => {
     <div>
       <Header />
       <Footer />
+      <PopularProdCart/>
       <Form />
     </div>
   );
