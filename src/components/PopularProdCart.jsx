@@ -1,13 +1,15 @@
 import React from 'react'
 import { useState } from 'react';
+import kofta from 'src/assets/image2.png';
+import starIcon from 'src/assets/star.png'
 
-const PopularProdCart = () => {
+const PopularProdCart = (props) => {
     const [isFavorite, setIsFavorite] = useState(false);
     const toggleClick = () => { !isFavorite ? setIsFavorite(true) : setIsFavorite(false); };
     return (
         <div className='pop-prod-cart'>
             <div className='pop-prod-image'>
-                <img src="" alt="" />
+                <img src={kofta} />
                 <button onClick={toggleClick} className='add-to-fav-btn' >
                     {!isFavorite ? (<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
@@ -18,6 +20,19 @@ const PopularProdCart = () => {
                     )}
                 </button>
             </div>
+            <div className='pop-prod-details'>
+                    <div className='pop-prod-details-title'>
+                        <p className='prod-name'>Green Man Jacket</p>
+                        <p className='seller-name'>North Purwokerto</p>
+                        <div className='prod-info'>
+                            <img src={starIcon} />
+                            <span className='feedback-point'>4.8</span>
+                            <div className='circle-space'></div>
+                            <span className='sold-count'>1238 Sold</span>
+                        </div>
+                    </div>
+                    <span className='pop-prod-details-price'>$49</span>
+                </div>
 
         </div>
     )
