@@ -8,8 +8,7 @@ const App = () => {
     <div>
       <Header />
       <Footer />
-      <PopularProdCart/>
-      <Form />
+      <Form holder="Enter your name" label="Holder Name" type="date"/>
     </div>
   );
 };
