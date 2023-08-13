@@ -209,8 +209,8 @@ body {
 
 // Pop-Prod_cart
 
-.pop-prod-cart{
-  max-width: 282px; 
+.pop-prod-cart {
+  max-width: 282px;
 }
 
 .pop-prod-image {
@@ -220,7 +220,7 @@ body {
   border-radius: 8px;
   @include d-flex;
   position: relative;
-  .add-to-fav-btn{
+  .add-to-fav-btn {
     position: absolute;
     right: 10px;
     top: 12px;
@@ -253,9 +253,38 @@ body {
       }
     }
   }
-  .pop-prod-details-price{
+  .pop-prod-details-price {
     @include h6;
     color: $primary100;
+  }
+}
 
+// Form Input
+
+.input-form-container {
+  @include d-flex(column, space-between, flex-start);
+  gap: 6px;
+  margin: 10px;
+  .input-heading {
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: -0.8px;
+    font-size: 16px;
+  }
+
+  .form-input {
+    width: 362px;
+    height: 46px;
+    border-radius: 12px;
+    border: 1px solid $dgray300;
+    color: $secondary300;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 16px;
+    line-height: 25.6px;
+  }
+
+  .form-input:focus {
+    outline: none;
   }
 }
