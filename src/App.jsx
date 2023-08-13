@@ -1,6 +1,7 @@
 import React from "react";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import PopularProdCart from "./components/PopularProdCart";
 
 
 const App = () => {
@@ -8,6 +9,7 @@ const App = () => {
     <div>
       <Header />
       <Footer/>
+      <PopularProdCart/>
     </div>
   );
 };

@@ -110,6 +110,9 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  img{
+    width: 104px;
+  }
 }
 
 .logo-content p {
@@ -188,3 +191,21 @@ body {
   display: flex;
   gap: 40px;
 }
+
+
+// addtofavbtn
+
+.add-to-fav-btn{
+  @include d-flex;
+  width: 36px;
+  height: 36px;
+  border: 0px;
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
+  .red-heart{
+    color: $danger300;
+  }
+}
+
+
