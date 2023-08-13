@@ -207,6 +207,58 @@ body {
   }
 }
 
+// Pop-Prod_cart
+
+.pop-prod-cart {
+  max-width: 282px;
+}
+
+.pop-prod-image {
+  width: 282px;
+  height: 280px;
+  background-color: $light-gray200;
+  border-radius: 8px;
+  @include d-flex;
+  position: relative;
+  .add-to-fav-btn {
+    position: absolute;
+    right: 10px;
+    top: 12px;
+  }
+}
+
+.pop-prod-details {
+  margin-top: 16px;
+  width: 282px;
+  @include d-flex(row, space-between, flex-start);
+  .pop-prod-details-title {
+    .prod-name {
+      @include h6;
+    }
+    .seller-name {
+      @include p1-regular-xs;
+      color: $secondary300;
+    }
+    .prod-info {
+      @include d-flex(row, flex-start, center);
+      gap: 5px;
+      span {
+        @include p1-regular-xs;
+      }
+      .circle-space {
+        width: 4px;
+        height: 4px;
+        background-color: $dgray300;
+        border-radius: 50%;
+      }
+    }
+  }
+  .pop-prod-details-price {
+    @include h6;
+    color: $primary100;
+  }
+}
+
 // Form Input
 
 .input-form-container {
