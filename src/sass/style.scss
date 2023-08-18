@@ -119,11 +119,13 @@ button {
 }
 
 /*FOOTER*/
+.footer-background {
+  background-color: #f7f7f7;
+}
+
 .foot-container {
-  width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: #f7f7f7;
 }
 
 .f-about {
@@ -134,7 +136,7 @@ button {
   padding-top: 100px;
   max-width: 1150px;
   margin: 0 auto;
-  height: 382px;
+  height: 444px;
 }
 
 .logo-content {
@@ -301,6 +303,26 @@ button {
   }
 }
 
+//FEATURED-CATEGOTY-CARD
+.feat-cat-card {
+  width: 180px;
+  min-width: 180px;
+  height: 198px;
+  border-radius: 12px;
+  border: 2px solid $dgray300;
+  cursor: pointer;
+  @include d-flex(column, center, center);
+  h6 {
+    @include h6;
+    color: $black300;
+    margin-top: 24px;
+  }
+  p {
+    @include p1-regular-xs;
+    color: $secondary300;
+  }
+}
+
 // Form Input
 
 .input-form-container {
@@ -349,6 +371,12 @@ button {
   position: relative;
   .sign-up-container {
     height: 642px;
+
+    .button-box button:hover {
+      background-color: transparent !important;
+      color: $primary300 !important;
+      border: 1px solid $primary300 !important;
+    }
     .sign-up-forms {
       display: flex;
       flex-direction: column;
@@ -458,8 +486,19 @@ button {
 
 //HOME
 
+.home-page-container {
+  margin: 0 auto;
+}
+
 .carousel {
   background-color: $dgray100;
+}
+
+:where(.css-dev-only-do-not-override-byeoj0).ant-carousel .slick-dots li.slick-active button{
+}
+
+:where(.css-dev-only-do-not-override-byeoj0).ant-carousel .slick-dots li button::after{
+  background-color: $primary300;
 }
 
 .carousel-page-container {
@@ -467,7 +506,7 @@ button {
   height: 620px;
   position: relative;
   .background-image-container {
-    width: 100vw;
+    width: 100%;
     height: 100%;
     position: absolute;
     .helper-left {
@@ -485,14 +524,14 @@ button {
 
       .hero-cards-arrow {
         position: absolute;
-        left: 220px;
-        top: 130px;
+        left: 260px;
+        top: 150px;
       }
 
       .hero-cards-way {
         position: absolute;
-        left: 240px;
-        top: 175px;
+        left: 280px;
+        top: 185px;
       }
 
       .pop-prod-cart {
@@ -502,8 +541,8 @@ button {
         z-index: 100;
         height: 223px !important;
         position: absolute;
-        left: 170px;
-        top: 200px;
+        left: 200px;
+        top: 210px;
         .add-to-fav-btn {
           width: 24px;
           height: 24px;
@@ -594,11 +633,46 @@ button {
   }
 }
 
+//FEATURED-CATEGORY
+.featured-category {
+  margin-top: 120px;
+
+  .category-cards-heading {
+    @include d-flex(row, space-between, center);
+
+    h2 {
+      @include h2;
+    }
+    button:hover {
+      background-color: $primary300 !important;
+      color: white !important;
+      border: 0px !important;
+    }
+  }
+  .categories-cards {
+    margin-top: 52px;
+    @include d-flex;
+    gap: 24px;
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+}
+
+//Popular-products
+
 .pop-products {
   padding-top: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .load-more-product button:hover {
+    background-color: $primary300 !important;
+    color: white !important;
+    border: 0px !important;
+  }
 
   .pop-products-heading {
     @include h2;
@@ -630,9 +704,8 @@ button {
   @include d-flex(row, space-around, center);
   .adverting-product-rigth-container {
     max-width: 483px;
-    @include d-flex(column, center , flex-start);
+    @include d-flex(column, center, flex-start);
     gap: 16px;
-
 
     .product-name {
       @include h2;
@@ -641,9 +714,77 @@ button {
       @include p1-regular;
       margin-bottom: 32px;
     }
-    .button-box{
+    .button-box {
       display: flex;
       gap: 16px;
+      :nth-child(1):hover {
+        background-color: transparent !important;
+        color: $primary300 !important;
+        border: 1px solid $primary300 !important;
+      }
+      :nth-child(2):hover {
+        background-color: $primary300 !important;
+        color: white !important;
+        border: 0px !important;
+      }
     }
   }
+}
+
+//ARTICLE-CARD-component
+.article-card {
+  width: 384px;
+  height: 444px;
+  cursor: pointer;
+  @include d-flex(column, space-between, flex-start);
+  .card-img-container {
+    width: 384px;
+    border-radius: 8px;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 280px;
+      transition: 0.6s;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .card-date {
+    @include p1-regular-xs;
+    color: $secondary300;
+  }
+  .card-heading {
+    @include h6;
+    color: $black300;
+  }
+  .card-paragraph {
+    @include p1-regular-xs;
+    color: $secondary300;
+  }
+}
+
+//LENNY ARTICLE
+
+.lennys-article {
+  margin-bottom: 120px;
+}
+.article-heading {
+  @include d-flex(row, space-between, center);
+  margin-bottom: 52px;
+
+  h2 {
+    @include h2;
+  }
+  button:hover {
+    background-color: $primary300 !important;
+    color: white !important;
+    border: 0px !important;
+  }
+}
+
+.article-cards-container {
+  display: flex;
+  justify-content: space-between;
 }

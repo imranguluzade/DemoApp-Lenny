@@ -25,7 +25,7 @@ const SignUp = () => {
         Getting Trouble?
       </a>
       <div className="button-box">
-        <MYButton text="Sign Up" variant="outline" size="lg" />
+        <MYButton className="signup-button" text="Sign Up" variant="outline" size="lg" />
       </div>
 
       <div className="other-method">

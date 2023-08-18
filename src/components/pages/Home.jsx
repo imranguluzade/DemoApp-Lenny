@@ -1,9 +1,11 @@
 import React from "react";
 import Header from "../Header";
-import Footer from "src/components/Footer"
+import Footer from "src/components/Footer";
 import Button from "../Button";
+import ArcticleCard from "../ArcticleCard";
 import PopularProdCart from "../PopularProdCart";
-import HeroImage from "src/assets/image-4-carousel.jpg";
+import FeaturedCategCard from "../FeaturedCategCard";
+import HeroImage from "src/assets/image4.png";
 import CardsArrow from "src/assets/Frame 46.png";
 import CardsWay from "src/assets/Frame 48.png";
 import advertProduct from "src/assets/iPad Air 2020.png";
@@ -14,7 +16,7 @@ const Home = () => {
       <Header />
       <div className="home-page-container">
         <div className="carousel">
-          <Carousel autoplay className="container">
+          <Carousel className="container" autoplay>
             <div className="carousel-page-container">
               <div className="background-image-container">
                 <div className="helper-left"></div>
@@ -45,10 +47,27 @@ const Home = () => {
                 <div className="right-hero-container"></div>
               </div>
             </div>
-            {/* <div className="carousel-page"></div> */}
+            <div className="carousel-page"></div>
           </Carousel>
         </div>
-        <div className="featured-category"></div>
+        <div className="featured-category container">
+          <div className="category-cards-heading">
+            <h2>Featured Category</h2>
+            <Button text="View Detail" variant="outline" size="sm" />
+          </div>
+          <div className="categories-cards">
+            <FeaturedCategCard />
+            <FeaturedCategCard />
+            <FeaturedCategCard />
+            <FeaturedCategCard />
+            <FeaturedCategCard />
+            <FeaturedCategCard />
+            <FeaturedCategCard />
+            <FeaturedCategCard />
+            <FeaturedCategCard />
+            <FeaturedCategCard />
+          </div>
+        </div>
         <div className="pop-products container">
           <h2 className="pop-products-heading">Popular Product on Lenny</h2>
           <p className="pop-products-paragraph">
@@ -65,11 +84,9 @@ const Home = () => {
             <PopularProdCart className="pop-card" />
             <PopularProdCart className="pop-card" />
           </div>
-          <Button
-            className="load-more-product"
-            text="Load More"
-            variant="outline"
-          />
+          <div className="load-more-product">
+            <Button text="Load More" variant="outline" />
+          </div>
         </div>
         <div className="advertising-product container">
           <img src={advertProduct} />
@@ -80,13 +97,24 @@ const Home = () => {
               sapien quam risus sed diam.
             </p>
             <div className="button-box">
-              <Button text="Buy $900" variant="fill"/>
+              <Button text="Buy $900" variant="fill" />
               <Button text="View Detail" variant="outline" />
             </div>
           </div>
         </div>
+        <div className="lennys-article container">
+          <div className="article-heading">
+            <h2>Lenny’s Article</h2>
+            <Button text="View Detail" variant="outline" size="sm" />
+          </div>
+          <div className="article-cards-container">
+            <ArcticleCard />
+            <ArcticleCard />
+            <ArcticleCard />
+          </div>
+        </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };
