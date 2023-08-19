@@ -6,6 +6,10 @@ import { useContext } from "react";
 
 const SignIn = () => {
   const { isLogin, setIsLogin } = useContext(modalContext);
+
+  const action = () =>{
+    setIsLogin(false)
+  }
   return (
     <div className="sign-in-container">
       <h5 className="modal-title">Sign In</h5>
@@ -25,9 +29,7 @@ const SignIn = () => {
             text="Sign Up"
             variant="outline"
             size="lg"
-            onClick={() => {
-              setIsLogin(false);
-            }}
+            action={action}
           />
         )}
       </div>

@@ -1,4 +1,6 @@
 import React from "react";
+import { useContext } from "react";
+import { modalContext } from "src/context/ModalProvider";
 
 const Button = (props) => {
   const buttonStyle = {
@@ -24,10 +26,14 @@ const Button = (props) => {
   //   color: props.variant === "fill" ? "white" : "#1E4C2F",
   //   border: props.variant === "outline" ? "0px" : "1px solid #1E4C2F",
   // };
+  const { isLogin, setIsLogin } = useContext(modalContext);
+
   return (
     <>
       <button
         style={buttonStyle}
+        onClick={props.action ? props.action : null}
+        className={props.className}
         // onMouseEnter={(e) => {
         //   e.target.style.backgroundColor = hoverStyle.backgroundColor;
         //   e.target.style.color = hoverStyle.color;

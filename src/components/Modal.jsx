@@ -16,6 +16,7 @@ const Modal = () => {
 
   const handleCancel = () => {
     setIsModalOpen(false);
+    setIsLogin(true);
   };
 
   return (
@@ -30,14 +31,6 @@ const Modal = () => {
               animate={{ opacity: 1, x: 0 }}
             >
               <SignIn />
-              <button
-                className="haha-button"
-                onClick={() => {
-                  setIsLogin(false);
-                }}
-              >
-                SignUp
-              </button>
             </motion.div>
           ) : (
             <motion.div
@@ -47,14 +40,6 @@ const Modal = () => {
               animate={{ opacity: 1, x: 0 }}
             >
               <SignUp />
-              <button
-                className="haha-button"
-                onClick={() => {
-                  setIsLogin(true);
-                }}
-              >
-                SignIn
-              </button>
             </motion.div>
           )}
         </AnimatePresence>
