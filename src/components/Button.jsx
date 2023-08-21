@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
 import { modalContext } from "src/context/ModalProvider";
 
@@ -14,6 +14,8 @@ const Button = (props) => {
         : props.size === "sm"
         ? "122px"
         : props.size === "lg"
+        ? "260px"
+        : props.size === "xl"
         ? "100%"
         : "200px",
     height: props.size === "sm" ? "45px" : "lg" ? "53px" : "53px",

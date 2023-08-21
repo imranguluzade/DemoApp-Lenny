@@ -23,12 +23,12 @@ const SignIn = () => {
         Getting Trouble?
       </a>
       <div className="button-box">
-        <MYButton text="Sign In" variant="fill" size="lg" />
+        <MYButton text="Sign In" variant="fill" size="xl" />
         {isLogin && (
           <MYButton
             text="Sign Up"
             variant="outline"
-            size="lg"
+            size="xl"
             action={action}
           />
         )}

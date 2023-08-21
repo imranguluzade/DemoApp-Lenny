@@ -1,11 +1,11 @@
 import React from "react";
-import Footer from "./components/Footer";
-import Home from "./components/pages/Home";
+import ProductDetail from "./components/pages/ProductDetail";
+import Tabs from "./components/Tabs";
 
 const App = () => {
   return (
     <div>
-      <Home />
+      <ProductDetail />
     </div>
   );
 };

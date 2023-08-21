@@ -488,10 +488,16 @@ button {
   background-color: $dgray100;
 }
 
-:where(.css-dev-only-do-not-override-byeoj0).ant-carousel .slick-dots li.slick-active button{
+:where(.css-dev-only-do-not-override-byeoj0).ant-carousel
+  .slick-dots
+  li.slick-active
+  button {
 }
 
-:where(.css-dev-only-do-not-override-byeoj0).ant-carousel .slick-dots li button::after{
+:where(.css-dev-only-do-not-override-byeoj0).ant-carousel
+  .slick-dots
+  li
+  button::after {
   background-color: $primary300;
 }
 
@@ -781,4 +787,162 @@ button {
 .article-cards-container {
   display: flex;
   justify-content: space-between;
+}
+
+//GALLERY-SLIDER
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: $light-gray200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide-img {
+  display: block;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.swiper {
+  width: 100%;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.swiper-slide {
+  background-size: cover;
+  background-position: center;
+  border-radius: 9px;
+}
+
+.mySwiper2 {
+  height: 460px;
+  width: 585px;
+  margin: 0px;
+}
+
+.mySwiper {
+  height: 134px;
+  width: 584px;
+  margin: 0px;
+  box-sizing: border-box;
+  padding: 10px 0;
+}
+
+.mySwiper .swiper-slide {
+  width: 25%;
+  height: 100%;
+  opacity: 0.4;
+}
+
+.mySwiper .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  color: $black300;
+  font-size: 25px;
+}
+
+.mouse-1-img {
+  width: 86px;
+  height: 86px;
+}
+
+//PRODUCT DETAILS
+.bread-crumb {
+  margin-top: 60px;
+  .ant-breadcrumb-link {
+    font-family: $cg-main;
+    color: $primary100;
+    @include p2-medium;
+  }
+  ol{
+    &:last-child li span{
+      color: $black300;
+    }
+  }
+}
+
+.product-main-details {
+  @include d-flex(row, space-between, center);
+  gap: 42px;
+  margin-top: 32px;
+  .product-name h2 {
+    @include h2;
+    margin-bottom: 8px;
+  }
+  .stars-solds {
+    @include d-flex(row, flex-start, center);
+    margin-bottom: 16px;
+    gap: 3px;
+    .solds {
+      margin-left: 10px;
+    }
+  }
+  .product-price {
+    @include h4;
+    color: $primary100;
+    margin-bottom: 24px;
+  }
+  .product-description {
+    @include p1-regular-xs;
+    color: $secondary300;
+    border-bottom: 1px solid $dgray300;
+    padding-bottom: 24px;
+  }
+  .variant-heading {
+    font-size: 18px !important;
+    font-weight: 600;
+    color: $black300;
+    height: 40px;
+    margin-bottom: 12px;
+  }
+  .variant-flex {
+    @include d-flex(row, flex-start, center);
+    gap: 16px;
+    .variant-type,
+    .variant-color {
+      @include d-flex(column, flex-start, flex-start);
+      gap: 8px;
+      select {
+        width: 140px;
+        height: 44px;
+        border-radius: 8px;
+        border: 1px solid $dgray300;
+        padding-left: 12px;
+        option {
+          :root {
+            --swiper-theme-color: $primary300;
+          }
+        }
+      }
+    }
+  }
+  .button-box {
+    @include d-flex(row, flex-start, center);
+    margin-top: 52px;
+    gap: 16px;
+  }
+}
+
+.tab-lists {
+  margin-top: 52px;
+
+  :where(.css-dev-only-do-not-override-byeoj0).ant-tabs
+    .ant-tabs-tab.ant-tabs-tab-active
+    .ant-tabs-tab-btn {
+    color: $primary300;
+  }
 }

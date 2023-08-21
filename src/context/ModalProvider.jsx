@@ -10,7 +10,7 @@ const ModalProvider = ({ children }) => {
     isModalOpen,
     setIsModalOpen,
     isLogin,
-    setIsLogin,
+    setIsLogin
   };
 
   return (
