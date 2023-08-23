@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
-import Modal from "./Modal";
-import { modalContext } from "../context/ModalProvider";
+import Modal from "../Modal/Modal";
+import { modalContext } from "../../context/ModalProvider";
 import logoImage from "src/assets/Logo.png";
 import searchIcon from "src/assets/search-normal.png";
 import basketIcon from "src/assets/Frame6.png";
 import profileIcon from "src/assets/Frame3.png";
 import { Link } from "react-router-dom";
-import MyButton from "./Button";
+import MyButton from "../Button/Button";
+import './Header.scss';
 
 const Header = () => {
   const { setIsModalOpen } = useContext(modalContext);

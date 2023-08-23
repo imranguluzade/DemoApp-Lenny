@@ -1,6 +1,7 @@
 import React from "react";
-import Button from "src/components/Button";
-import PopularProdCart from "./PopularProdCart";
+import Button from "src/components/Button/Button";
+import PopularProdCart from "../Cart/PopularProdCart";
+import './RelatedProducts.scss';
 
 const RelatedProducts = () => {
   return (

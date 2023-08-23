@@ -1,5 +1,6 @@
 import React from "react";
 import ArticleCardImg from "src/assets/Rectangle 531.png";
+import './ArticleCard.scss';
 
 const ArcticleCard = () => {
   return (

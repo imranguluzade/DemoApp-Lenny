@@ -4,6 +4,7 @@ import firstProductImg from "src/assets/Untitled-1 1.png";
 import secondProductImg from "src/assets/Untitled-1 3.png";
 import thirdProductImg from "src/assets/Untitled-1 4.png";
 import fourthProductImg from "src/assets/Untitled-1 2.png";
+import './ProductGallery.scss';
 
 import "swiper/css";
 import "swiper/css/free-mode";

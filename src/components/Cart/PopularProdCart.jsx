@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import kofta from "src/assets/image2.png";
 import starIcon from "src/assets/star.png";
+import './Cart.scss'
 
 const PopularProdCart = (props) => {
   const [isFavorite, setIsFavorite] = useState(false);

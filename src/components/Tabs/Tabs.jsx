@@ -1,4 +1,5 @@
 import React from "react";
+import './Tabs.scss';
 import { Tabs as TabsComponent } from "antd";
 
 const Tabs = () => {

@@ -1,31 +1,37 @@
 import React from "react";
-import MYButton from "src/components/Button";
-import Form from "src/components/Form";
+import MYButton from "src/components/Button/Button";
+import Form from "src/components/Form/Form";
+import { modalContext } from "src/context/ModalProvider";
+import { useContext } from "react";
 
-const SignUp = () => {
+const SignIn = () => {
+  const { isLogin, setIsLogin } = useContext(modalContext);
+
+  const action = () => {
+    setIsLogin(false)
+  }
   return (
-    <div className="sign-up-container">
-      <h5 className="modal-title">Sign Up</h5>
-      <div className="sign-up-forms ">
-        <Form className label="Name" holder="Enter your name" type="text" />
-        <Form
-          className
-          label="Phone Number or Email"
-          holder="Enter your phone number or email"
-          type="text"
-        />
-        <Form
-          className
-          label="Password"
-          holder="Enter your password"
-          type="text"
-        />
-      </div>
+    <div className="sign-in-container">
+      <h5 className="modal-title">Sign In</h5>
+      <Form
+        className
+        label="Phone Number or Email"
+        holder="Enter your phone number or email"
+        type="text"
+      />
       <a className="forgot-pswrd" href="#">
         Getting Trouble?
       </a>
       <div className="button-box">
-        <MYButton className="signup-button" text="Sign Up" variant="outline" size="xl" />
+        <MYButton text="Sign In" variant="fill" size="xl" />
+        {isLogin && (
+          <MYButton
+            text="Sign Up"
+            variant="outline"
+            size="xl"
+            action={action}
+          />
+        )}
       </div>
 
       <div className="other-method">
@@ -46,10 +52,10 @@ const SignUp = () => {
             fill="#337FFF"
           />
         </svg>
-        Sign up with Facebook
+        Sign in with Facebook
       </button>
     </div>
   );
 };
 
-export default SignUp;
+export default SignIn;

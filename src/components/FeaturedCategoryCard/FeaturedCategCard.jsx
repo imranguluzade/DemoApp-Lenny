@@ -1,5 +1,6 @@
 import React from "react";
 import CategoryLogo from "src/assets/Frame.png";
+import './FeaturedCategCard.scss'
 
 const FeaturedCategCard = () => {
   return (

@@ -1,14 +1,15 @@
 import React from "react";
-import Button from "../Button";
-import ArcticleCard from "../ArcticleCard";
-import PopularProdCart from "../PopularProdCart";
-import FeaturedCategCard from "../FeaturedCategCard";
+import Button from "../../components/Button/Button";
+import ArcticleCard from "../../components/ArticleCard/ArcticleCard";
+import PopularProdCart from "../../components/Cart/PopularProdCart";
+import FeaturedCategCard from "../../components/FeaturedCategoryCard/FeaturedCategCard";
 import HeroImage from "src/assets/image4.png";
 import CardsArrow from "src/assets/Frame 46.png";
 import CardsWay from "src/assets/Frame 48.png";
 import advertProduct from "src/assets/iPad Air 2020.png";
 import { Carousel } from "antd";
 import { Link } from "react-router-dom";
+import './Home.scss';
 const Home = () => {
   return (
     <>

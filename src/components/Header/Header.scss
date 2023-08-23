@@ -1,0 +1,122 @@
+@import "src/sass/utils/reset.scss";
+@import "src/sass/utils/fonts.scss";
+@import "src/sass/utils/variables.scss";
+@import "src/sass/utils/mixins.scss";
+
+* {
+  font-family: $cg-main;
+}
+
+body {
+  font-family: $cg-main;
+}
+
+Link{
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1216px;
+  width: 95%;
+  margin: 0 auto;
+}
+
+button {
+  cursor: pointer;
+}
+
+.big-container {
+    width: 100%;
+    height: 88px;
+    background-color: white;
+    border-bottom: 1px solid #e4e9ee;
+  }
+  
+  .header-container {
+    height: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+  }
+  
+  .search-box {
+    width: 856px;
+    max-width: 856px;
+    height: 44px;
+    background-color: #f6f8fa;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    gap: 15px;
+  }
+  
+  .search-sort {
+    background-color: #f6f8fa;
+    width: 110px;
+    height: 22px;
+    font-weight: 500;
+    font-size: 14px;
+    border: 0px;
+    margin-left: 10px;
+    height: 100%;
+    cursor: pointer;
+  }
+  
+  .search-text {
+    background-color: #f6f8fa;
+    border: 0px;
+    height: 20px;
+    color: #818b9c;
+    font-size: 14px;
+    font-weight: 500;
+    width: 100%;
+    height: 100%;
+    border-radius: 0px 8px 8px 0px;
+  }
+  
+  .search-text,
+  .search-sort:focus {
+    outline: none;
+  }
+  
+  .cutter {
+    height: 20px;
+    background-color: #e4e9ee;
+    width: 1px;
+  }
+  
+  .pp-basket {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .cutter2 {
+    height: 24px;
+    background-color: #e4e9ee;
+    width: 1px;
+  }
+  
+  .search-logo {
+    padding-right: 15px;
+    background-color: transparent;
+    border: 0px;
+    cursor: pointer;
+  }
+  
+  .h-profile {
+    background-color: transparent;
+    border: 0px;
+    img {
+      cursor: pointer;
+    }
+  }
+  
+  .h-basket {
+    background-color: transparent;
+    border: 0px;
+    cursor: pointer;
+  }

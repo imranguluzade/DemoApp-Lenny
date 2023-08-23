@@ -1,10 +1,11 @@
 import React from "react";
 import { Modal as AntModal } from "antd";
-import { modalContext } from "../context/ModalProvider";
+import { modalContext } from "../../context/ModalProvider";
 import { useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import SignIn from "src/components/pages/SignIn";
-import SignUp from "src/components/pages/SignUp";
+import SignIn from "src/pages/SignIn";
+import SignUp from "src/pages/SignUp";
+import './Modal.scss';
 
 const Modal = () => {
   const { isModalOpen, setIsModalOpen, isLogin, setIsLogin } =

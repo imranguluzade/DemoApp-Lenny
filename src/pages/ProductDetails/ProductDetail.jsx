@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { Breadcrumb } from "antd";
 import star from "src/assets/star.png";
-import Button from "../Button";
-import RelatedProducts from "../RelatedProducts";
-import ProductGallery from "../ProductGallery";
-import Tabs from "../Tabs";
+import Button from "../../components/Button/Button";
+import RelatedProducts from "../../components/RelatedProducts/RelatedProducts";
+import ProductGallery from "../../components/Slider/ProductGallery";
+import Tabs from "../../components/Tabs/Tabs";
 import ShoppingChart from "src/assets/shopping-cart.png";
 import { Link } from "react-router-dom";
+import './ProductDetails.scss'
 
 const ProductDetail = () => {
   const scrollToTop = () => {
@@ -14,7 +15,7 @@ const ProductDetail = () => {
   };
 
   useEffect(() => {
-    scrollToTop(); 
+    scrollToTop();
   }, []);
 
   return (
