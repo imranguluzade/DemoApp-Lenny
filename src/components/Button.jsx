@@ -9,7 +9,9 @@ const Button = (props) => {
     color: props.variant === "fill" ? "white" : "#1E4C2F",
     borderRadius: props.size === "sm" ? "8px" : "8px",
     width:
-      props.size === "xs"
+      props.size === "xxs"
+        ? "112px"
+        : props.size === "xs"
         ? "120px"
         : props.size === "sm"
         ? "122px"
@@ -18,8 +20,9 @@ const Button = (props) => {
         : props.size === "xl"
         ? "100%"
         : "200px",
-    height: props.size === "sm" ? "45px" : "lg" ? "53px" : "53px",
-    fontSize: props.size === "lg" ? "16px" : "sm" ? "18px" : "18px",
+    height:
+      props.size === "xxs" ? "38px" : "sm" ? "45px" : "lg" ? "53px" : "53px",
+    fontSize: props.size === "lg" || "xxs" ? "16px" : "sm" ? "18px" : "18px",
     fontWeight: props.size === "sm" ? "600" : "600",
     transition: "background-color 0.4s, color 0.4s, border 0.4s",
   };

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState} from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import firstProductImg from "src/assets/Untitled-1 1.png";
 import secondProductImg from "src/assets/Untitled-1 3.png";
@@ -15,6 +15,7 @@ import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 
 const ProductGallery = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const firstElementRef = useRef(null);
   return (
     <>
       <Swiper

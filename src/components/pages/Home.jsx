@@ -1,6 +1,4 @@
 import React from "react";
-import Header from "../Header";
-import Footer from "src/components/Footer";
 import Button from "../Button";
 import ArcticleCard from "../ArcticleCard";
 import PopularProdCart from "../PopularProdCart";
@@ -10,10 +8,10 @@ import CardsArrow from "src/assets/Frame 46.png";
 import CardsWay from "src/assets/Frame 48.png";
 import advertProduct from "src/assets/iPad Air 2020.png";
 import { Carousel } from "antd";
+import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <>
-      <Header />
       <div className="home-page-container">
         <div className="carousel">
           <Carousel className="container" autoplay>
@@ -28,7 +26,12 @@ const Home = () => {
                 >
                   <img className="hero-cards-arrow" src={CardsArrow} />
                   <img className="hero-cards-way" src={CardsWay} />
-                  <PopularProdCart />
+                  <Link to="/product-detail">
+                    <PopularProdCart className="pop-card" />
+                  </Link>
+                  <Link to="/product-detail">
+                    <PopularProdCart className="pop-card" />
+                  </Link>
                 </div>
               </div>
               <div className="hero-content">
@@ -75,14 +78,30 @@ const Home = () => {
           </p>
 
           <div className="pop-products-cards">
-            <PopularProdCart className="pop-card" />
-            <PopularProdCart className="pop-card" />
-            <PopularProdCart className="pop-card" />
-            <PopularProdCart className="pop-card" />
-            <PopularProdCart className="pop-card" />
-            <PopularProdCart className="pop-card" />
-            <PopularProdCart className="pop-card" />
-            <PopularProdCart className="pop-card" />
+            <Link to="/product-detail">
+              <PopularProdCart className="pop-card" />
+            </Link>
+            <Link to="/product-detail">
+              <PopularProdCart className="pop-card" />
+            </Link>
+            <Link to="/product-detail">
+              <PopularProdCart className="pop-card" />
+            </Link>
+            <Link to="/product-detail">
+              <PopularProdCart className="pop-card" />
+            </Link>
+            <Link to="/product-detail">
+              <PopularProdCart className="pop-card" />
+            </Link>
+            <Link to="/product-detail">
+              <PopularProdCart className="pop-card" />
+            </Link>
+            <Link to="/product-detail">
+              <PopularProdCart className="pop-card" />
+            </Link>
+            <Link to="/product-detail">
+              <PopularProdCart className="pop-card" />
+            </Link>
           </div>
           <div className="load-more-product">
             <Button text="Load More" variant="outline" />
@@ -114,7 +133,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

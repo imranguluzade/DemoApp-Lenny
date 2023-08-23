@@ -1,23 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Breadcrumb } from "antd";
-import Header from "../Header";
 import star from "src/assets/star.png";
 import Button from "../Button";
+import RelatedProducts from "../RelatedProducts";
 import ProductGallery from "../ProductGallery";
 import Tabs from "../Tabs";
 import ShoppingChart from "src/assets/shopping-cart.png";
+import { Link } from "react-router-dom";
 
 const ProductDetail = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToTop(); 
+  }, []);
+
   return (
     <div>
-      <Header />
       <div className="bread-crumb container">
         <Breadcrumb
           separator=">"
           items={[
             {
               title: "Home",
-              href: "",
+              href: "/",
             },
             {
               title: "Electronic",
@@ -71,6 +79,7 @@ const ProductDetail = () => {
       <div className="tab-lists container">
         <Tabs />
       </div>
+      <RelatedProducts />
     </div>
   );
 };

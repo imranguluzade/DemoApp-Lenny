@@ -11,6 +11,10 @@ body {
   font-family: $cg-main;
 }
 
+Link{
+  text-decoration: none;
+}
+
 .container {
   max-width: 1216px;
   width: 95%;
@@ -278,6 +282,7 @@ button {
   .pop-prod-details-title {
     .prod-name {
       @include h6;
+      color: $black300;
     }
     .seller-name {
       @include p1-regular-xs;
@@ -288,6 +293,7 @@ button {
       gap: 5px;
       span {
         @include p1-regular-xs;
+        color: $black300;
       }
       .circle-space {
         width: 4px;
@@ -791,9 +797,14 @@ button {
 
 //GALLERY-SLIDER
 
+.product-gallery{
+  width: 50%;
+  height: 100%;
+}
+
 .swiper {
   width: 100%;
-  height: 100%;
+ 
 }
 
 .swiper-slide {
@@ -807,14 +818,12 @@ button {
 
 .swiper-slide-img {
   display: block;
-  width: 300px;
-  height: 300px;
   object-fit: cover;
 }
 
+
 .swiper {
   width: 100%;
-  height: 300px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -826,14 +835,12 @@ button {
 }
 
 .mySwiper2 {
-  height: 460px;
-  width: 585px;
+  width: 100%;
   margin: 0px;
 }
 
 .mySwiper {
-  height: 134px;
-  width: 584px;
+  width: 100%;
   margin: 0px;
   box-sizing: border-box;
   padding: 10px 0;
@@ -841,7 +848,7 @@ button {
 
 .mySwiper .swiper-slide {
   width: 25%;
-  height: 100%;
+  height: 135px;
   opacity: 0.4;
 }
 
@@ -856,8 +863,7 @@ button {
 }
 
 .mouse-1-img {
-  width: 86px;
-  height: 86px;
+  width: 100%
 }
 
 //PRODUCT DETAILS
@@ -868,8 +874,8 @@ button {
     color: $primary100;
     @include p2-medium;
   }
-  ol{
-    &:last-child li span{
+  ol {
+    &:last-child li span {
       color: $black300;
     }
   }
@@ -879,6 +885,9 @@ button {
   @include d-flex(row, space-between, center);
   gap: 42px;
   margin-top: 32px;
+  .product-name{
+    width: 50%
+  }
   .product-name h2 {
     @include h2;
     margin-bottom: 8px;
@@ -939,10 +948,35 @@ button {
 
 .tab-lists {
   margin-top: 52px;
+  margin-bottom: 38px;
 
   :where(.css-dev-only-do-not-override-byeoj0).ant-tabs
     .ant-tabs-tab.ant-tabs-tab-active
     .ant-tabs-tab-btn {
     color: $primary300;
+  }
+}
+
+//Related Products
+.related-products {
+  .related-products-heading {
+    @include d-flex(row, space-between, center);
+    h6 {
+      @include h6;
+    }
+    button{
+      transition: 0.4s;
+    }
+    button:hover {
+      background-color: $primary300 !important;
+      color: white !important;
+    }
+  }
+  .related-products-cards{
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 120px;
   }
 }
