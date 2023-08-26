@@ -72,11 +72,18 @@ button {
 
 .f-link {
   list-style: none;
-  transition: 0.2s;
   cursor: pointer;
+  button {
+    transition: 0.2s;
+    background-color: transparent;
+    border: 0px;
+    @include p1-regular-xs;
+    color: $black300;
+    padding-left: 0px;
+  }
 }
 
-.f-link:hover {
+.f-link button:hover {
   color: #1d9e34;
 }
 

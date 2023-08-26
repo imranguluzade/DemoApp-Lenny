@@ -9,7 +9,7 @@ import CardsWay from "src/assets/Frame 48.png";
 import advertProduct from "src/assets/iPad Air 2020.png";
 import { Carousel } from "antd";
 import { Link } from "react-router-dom";
-import './Home.scss';
+import "./Home.scss";
 const Home = () => {
   return (
     <>
@@ -51,7 +51,41 @@ const Home = () => {
                 <div className="right-hero-container"></div>
               </div>
             </div>
-            <div className="carousel-page"></div>
+            <div className="carousel-page-container">
+              <div className="background-image-container">
+                <div className="helper-left"></div>
+                <div
+                  className="hero-image"
+                  style={{
+                    backgroundImage: `url(${HeroImage})`,
+                  }}
+                >
+                  <img className="hero-cards-arrow" src={CardsArrow} />
+                  <img className="hero-cards-way" src={CardsWay} />
+                  <Link to="/product-detail">
+                    <PopularProdCart className="pop-card" />
+                  </Link>
+                  <Link to="/product-detail">
+                    <PopularProdCart className="pop-card" />
+                  </Link>
+                </div>
+              </div>
+              <div className="hero-content">
+                <div className="left-hero-container">
+                  <h1>Upgrade Your Wardrobe With Our Collection</h1>
+                  <p>
+                    Eget neque aenean viverra aliquam tortor diam nunc. Dis
+                    pellentesque lectus quis velit fusce aenean nunc dui
+                    consectetur. Eu lorem est ullamcorper nisl amet non mollis.
+                  </p>
+                  <div className="hero-buttons">
+                    <Button text="Buy Now" variant="fill" />
+                    <Button text="View Detail" variant="outline" />
+                  </div>
+                </div>
+                <div className="right-hero-container"></div>
+              </div>
+            </div>
           </Carousel>
         </div>
         <div className="featured-category container">

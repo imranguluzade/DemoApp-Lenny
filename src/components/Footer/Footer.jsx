@@ -1,8 +1,11 @@
 import React from "react";
 import logoImage from "src/assets/Logo.png";
-import './Footer.scss';
+import "./Footer.scss";
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   return (
     <>
       <div className="footer-background">
@@ -19,28 +22,140 @@ const Footer = () => {
             <div className="foot-links-container">
               <ul className="f-links">
                 <li className="link-directing">About Lenny</li>
-                <li className="f-link">Information</li>
-                <li className="f-link">Store Lactor</li>
-                <li className="f-link">Bulk Purchase</li>
-                <li className="f-link">Alteration Services</li>
-                <li className="f-link">Gift Delivery Service</li>
-                <li className="f-link">Live Station</li>
+                <li className="f-link">
+                  <button
+                    onClick={() => {
+                      scrollToTop();
+                    }}
+                  >
+                    Information
+                  </button>
+                </li>
+                <li className="f-link">
+                  <button
+                    onClick={() => {
+                      scrollToTop();
+                    }}
+                  >
+                    Store Lactor
+                  </button>
+                </li>
+                <li className="f-link">
+                  <button
+                    onClick={() => {
+                      scrollToTop();
+                    }}
+                  >
+                    Bulk Purchase
+                  </button>
+                </li>
+                <li className="f-link">
+                  <button
+                    onClick={() => {
+                      scrollToTop();
+                    }}
+                  >
+                    Alteration Services
+                  </button>
+                </li>
+                <li className="f-link">
+                  <button
+                    onClick={() => {
+                      scrollToTop();
+                    }}
+                  >
+                    Gift Delivery Service
+                  </button>
+                </li>
+                <li className="f-link">
+                  <button
+                    onClick={() => {
+                      scrollToTop();
+                    }}
+                  >
+                    Live Station
+                  </button>
+                </li>
               </ul>
 
               <ul className="f-links">
                 <li className="link-directing">About Lenny</li>
-                <li className="f-link">FAQ</li>
-                <li className="f-link">Return Policy</li>
-                <li className="f-link">Privacy Policy</li>
-                <li className="f-link">Accessibillity</li>
-                <li className="f-link">Contact Us</li>
+                <li className="f-link">
+                  <button
+                    onClick={() => {
+                      scrollToTop();
+                    }}
+                  >
+                    FAQ
+                  </button>
+                </li>
+                <li className="f-link">
+                  <button
+                    onClick={() => {
+                      scrollToTop();
+                    }}
+                  >
+                    Return Policy
+                  </button>
+                </li>
+                <li className="f-link">
+                  <button
+                    onClick={() => {
+                      scrollToTop();
+                    }}
+                  >
+                    Privacy Policy
+                  </button>
+                </li>
+                <li className="f-link">
+                  <button
+                    onClick={() => {
+                      scrollToTop();
+                    }}
+                  >
+                    Accessibillity
+                  </button>
+                </li>
+                <li className="f-link">
+                  <button
+                    onClick={() => {
+                      scrollToTop();
+                    }}
+                  >
+                    Contact Us
+                  </button>
+                </li>
               </ul>
 
               <ul className="f-links">
                 <li className="link-directing">Account</li>
-                <li className="f-link">Membership</li>
-                <li className="f-link">Address</li>
-                <li className="f-link">Cupons</li>
+                <li className="f-link">
+                  <button
+                    onClick={() => {
+                      scrollToTop();
+                    }}
+                  >
+                    Membership
+                  </button>
+                </li>
+                <li className="f-link">
+                  <button
+                    onClick={() => {
+                      scrollToTop();
+                    }}
+                  >
+                    Address
+                  </button>
+                </li>
+                <li className="f-link">
+                  <button
+                    onClick={() => {
+                      scrollToTop();
+                    }}
+                  >
+                    Cupons
+                  </button>
+                </li>
               </ul>
 
               <div className="contact">
