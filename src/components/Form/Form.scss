@@ -11,7 +11,7 @@ body {
   font-family: $cg-main;
 }
 
-Link{
+Link {
   text-decoration: none;
 }
 
@@ -26,28 +26,28 @@ button {
 }
 
 .input-form-container {
-    @include d-flex(column, space-between, flex-start);
-    gap: 6px;
-    .input-heading {
-      font-weight: 600;
-      line-height: 22px;
-      letter-spacing: -0.8px;
-      font-size: 16px;
-    }
-  
-    .form-input {
-      width: 362px;
-      height: 46px;
-      border-radius: 12px;
-      border: 1px solid $dgray300;
-      color: $secondary300;
-      padding-left: 10px;
-      padding-right: 10px;
-      font-size: 16px;
-      line-height: 25.6px;
-    }
-  
-    .form-input:focus {
-      outline: none;
-    }
+  @include d-flex(column, space-between, flex-start);
+  gap: 6px;
+  .input-heading {
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: -0.8px;
+    font-size: 16px;
   }
+
+  .form-input {
+    width: 362px;
+    height: 46px;
+    border-radius: 12px;
+    border: 1px solid $dgray300;
+    color: $secondary300;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 16px;
+    line-height: 25.6px;
+  }
+
+  .form-input:focus {
+    outline: none;
+  }
+}

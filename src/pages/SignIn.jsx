@@ -1,38 +1,86 @@
-import React from "react";
+import { React, useState, useContext } from "react";
 import MYButton from "src/components/Button/Button";
 import Form from "src/components/Form/Form";
 import { modalContext } from "src/context/ModalProvider";
-import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { storeUser } from "src/helper";
+
+const initialUser = { password: "", identifier: "" }
 
 const SignIn = () => {
-  const { isLogin, setIsLogin } = useContext(modalContext);
+  const { isLogin, setIsLogin, setIsModalOpen, setIsAuth } = useContext(modalContext);
+  const [user, setUser] = useState(initialUser);
+  const navigate = useNavigate();
 
   const action = () => {
     setIsLogin(false)
   }
+
+  const handleUserChange = ({ target }) => {
+    const { name, value } = target;
+    setUser((currentUser) => ({
+      ...currentUser,
+      [name]: value
+    }))
+  };
+
+  const handleLogin = async () => {
+    try {
+      const url = `${import.meta.env.VITE_APP_STRAPI_BASE_URL
+        }/api/auth/local`
+      if (user.identifier && user.password) {
+        const { data } = await axios.post(url, user);
+        if (data.jwt) {
+          storeUser(data);
+          setUser(initialUser);
+          setIsModalOpen(false);
+          setIsAuth(true);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div className="sign-in-container">
       <h5 className="modal-title">Sign In</h5>
-      <Form
-        className
-        label="Phone Number or Email"
-        holder="Enter your phone number or email"
-        type="text"
-      />
-      <a className="forgot-pswrd" href="#">
-        Getting Trouble?
-      </a>
-      <div className="button-box">
-        <MYButton text="Sign In" variant="fill" size="xl" />
-        {isLogin && (
-          <MYButton
-            text="Sign Up"
-            variant="outline"
-            size="xl"
-            action={action}
-          />
-        )}
-      </div>
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        handleLogin();
+      }}>
+        <Form
+          label="Email"
+          holder="Enter your Email"
+          type="email"
+          name="identifier"
+          value={user.identifier}
+          onChange={handleUserChange}
+        />
+        <Form
+          label="Password"
+          holder="Enter your password"
+          type="password"
+          name="password"
+          value={user.password}
+          onChange={handleUserChange}
+        />
+        <a className="forgot-pswrd" href="#">
+          Getting Trouble?
+        </a>
+        <div className="button-box">
+          <MYButton text="Sign In" variant="fill" size="xl" />
+          {isLogin && (
+            <MYButton
+              text="Sign Up"
+              variant="outline"
+              size="xl"
+              action={action}
+            />
+          )}
+        </div>
+      </form>
 
       <div className="other-method">
         <div className="line"></div>

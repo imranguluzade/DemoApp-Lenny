@@ -1,32 +1,84 @@
-import React from "react";
+import { React, useState } from "react";
 import MYButton from "src/components/Button/Button";
 import Form from "src/components/Form/Form";
+import axios from "axios";
+import { modalContext } from "src/context/ModalProvider";
+import { useContext } from "react";
+
+const initialUser = { username: "", email: "", password: "" }
 
 const SignUp = () => {
+
+  const { isLogin, setIsLogin } = useContext(modalContext);
+
+  const [user, setUser] = useState(initialUser);  
+
+  const handleUserChange = ({ target }) => {
+    const { name, value } = target;
+    setUser((currentUser) => ({
+      ...currentUser,
+      [name]: value
+    }))
+  };
+
+  //! registerUser is handleSignup event
+  const registerUser = async () => {
+    try {
+      const url = `${import.meta.env.VITE_APP_STRAPI_BASE_URL
+        }/api/auth/local/register`
+      if (user.username && user.password && user.email) {
+        const res = await axios.post(url, user);
+        if (!!res) {
+          setUser(initialUser);
+          setIsLogin(true);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div className="sign-up-container">
       <h5 className="modal-title">Sign Up</h5>
-      <div className="sign-up-forms ">
-        <Form className label="Name" holder="Enter your name" type="text" />
+      <form
+        onSubmit={(e) => {
+          e.preventDefault()
+          registerUser();
+        }}
+        className="sign-up-forms ">
         <Form
-          className
-          label="Phone Number or Email"
-          holder="Enter your phone number or email"
+          label="Username"
+          holder="Enter your Username"
           type="text"
+          name="username"
+          value={user.username}
+          onChange={handleUserChange}
         />
         <Form
-          className
+          label="Email"
+          holder="Enter your Email"
+          type="text"
+          name="email"
+          value={user.email}
+          onChange={handleUserChange}
+        />
+        <Form
           label="Password"
           holder="Enter your password"
-          type="text"
+          type="password"
+          name="password"
+          value={user.password}
+          onChange={handleUserChange}
         />
-      </div>
-      <a className="forgot-pswrd" href="#">
-        Getting Trouble?
-      </a>
-      <div className="button-box">
-        <MYButton className="signup-button" text="Sign Up" variant="outline" size="xl" />
-      </div>
+
+        <a className="forgot-pswrd" href="#">
+          Getting Trouble?
+        </a>
+        <div className="button-box">
+          <MYButton type="submit" className="signup-button" text="Sign Up" variant="outline" size="xl" />
+        </div>
+      </form>
 
       <div className="other-method">
         <div className="line"></div>

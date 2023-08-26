@@ -12,14 +12,14 @@ const Button = (props) => {
       props.size === "xxs"
         ? "112px"
         : props.size === "xs"
-        ? "120px"
-        : props.size === "sm"
-        ? "122px"
-        : props.size === "lg"
-        ? "260px"
-        : props.size === "xl"
-        ? "100%"
-        : "200px",
+          ? "120px"
+          : props.size === "sm"
+            ? "122px"
+            : props.size === "lg"
+              ? "260px"
+              : props.size === "xl"
+                ? "100%"
+                : "200px",
     height:
       props.size === "xxs" ? "38px" : "sm" ? "45px" : "lg" ? "53px" : "53px",
     fontSize: props.size === "lg" || "xxs" ? "16px" : "sm" ? "18px" : "18px",
@@ -39,16 +39,17 @@ const Button = (props) => {
         style={buttonStyle}
         onClick={props.action ? props.action : null}
         className={props.className}
-        // onMouseEnter={(e) => {
-        //   e.target.style.backgroundColor = hoverStyle.backgroundColor;
-        //   e.target.style.color = hoverStyle.color;
-        //   e.target.style.border = hoverStyle.border;
-        // }}
-        // onMouseLeave={(e) => {
-        //   e.target.style.backgroundColor = buttonStyle.backgroundColor;
-        //   e.target.style.color = buttonStyle.color;
-        //   e.target.style.border = buttonStyle.border;
-        // }}
+        type={props.type}
+      // onMouseEnter={(e) => {
+      //   e.target.style.backgroundColor = hoverStyle.backgroundColor;
+      //   e.target.style.color = hoverStyle.color;
+      //   e.target.style.border = hoverStyle.border;
+      // }}
+      // onMouseLeave={(e) => {
+      //   e.target.style.backgroundColor = buttonStyle.backgroundColor;
+      //   e.target.style.color = buttonStyle.color;
+      //   e.target.style.border = buttonStyle.border;
+      // }}
       >
         {props.text}
       </button>

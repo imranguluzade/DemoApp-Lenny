@@ -6,11 +6,12 @@ import searchIcon from "src/assets/search-normal.png";
 import basketIcon from "src/assets/Frame6.png";
 import profileIcon from "src/assets/Frame3.png";
 import { Link } from "react-router-dom";
-import MyButton from "../Button/Button";
+import { getUserData } from "src/helper";
 import './Header.scss';
 
 const Header = () => {
-  const { setIsModalOpen } = useContext(modalContext);
+  const { setIsModalOpen, isAuth } = useContext(modalContext);
+  const { jwt } = getUserData();
 
   return (
     <div className="big-container">
@@ -40,14 +41,16 @@ const Header = () => {
           </button>
           <div className="cutter2"></div>
           <Modal />
-          <button className="h-profile">
+          {!jwt ? <button className="h-profile">
             <img
               onClick={() => {
-                setIsModalOpen(true);
+                if (!isAuth) {
+                  setIsModalOpen(true);
+                }
               }}
               src={profileIcon}
             />
-          </button>
+          </button> : <span>Hello User</span> }
         </div>
       </div>
     </div>

@@ -53,10 +53,17 @@ button {
       display: flex;
       flex-direction: column;
       gap: 16px;
+      position: relative;
+      a{
+        position: absolute;
+        bottom: 70px;
+        right: 0;
+  
+      }
     }
   }
   .sign-in-container {
-    height: 460px;
+    height: 520px;
   }
   input {
     width: 100% !important;

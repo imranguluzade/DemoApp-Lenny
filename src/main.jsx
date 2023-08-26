@@ -3,11 +3,12 @@ import ReactDOM from "react-dom/client";
 import App from "src/App.jsx";
 import "./sass/style.scss";
 import ModalProvider from "./context/ModalProvider";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <ModalProvider>
-      <App />
-    </ModalProvider>
-  </React.StrictMode>
+    <BrowserRouter>
+      <ModalProvider>
+        <App />
+      </ModalProvider>
+    </BrowserRouter>
 );
