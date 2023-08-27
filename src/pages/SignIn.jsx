@@ -2,7 +2,6 @@ import { React, useState, useContext } from "react";
 import MYButton from "src/components/Button/Button";
 import Form from "src/components/Form/Form";
 import { modalContext } from "src/context/ModalProvider";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { storeUser } from "src/helper";
 
@@ -11,7 +10,6 @@ const initialUser = { password: "", identifier: "" }
 const SignIn = () => {
   const { isLogin, setIsLogin, setIsModalOpen, setIsAuth } = useContext(modalContext);
   const [user, setUser] = useState(initialUser);
-  const navigate = useNavigate();
 
   const action = () => {
     setIsLogin(false)

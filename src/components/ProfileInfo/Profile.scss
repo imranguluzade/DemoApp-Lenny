@@ -1,0 +1,47 @@
+@import "src/sass/utils/reset.scss";
+@import "src/sass/utils/fonts.scss";
+@import "src/sass/utils/variables.scss";
+@import "src/sass/utils/mixins.scss";
+
+* {
+  font-family: $cg-main;
+}
+
+body {
+  font-family: $cg-main;
+}
+
+Link {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1216px;
+  width: 95%;
+  margin: 0 auto;
+}
+
+button {
+  cursor: pointer;
+}
+
+.profile-parent {
+  position: relative;
+}
+
+.profile-details {
+  z-index: 999;
+  position: absolute;
+  top: 60px;
+  right: 0px;
+  background-color: white;
+  width: 410px;
+  height: 498px;
+  border-radius: 8px;
+  box-shadow: 10px 10px 5px $secondary100;
+  display: block;
+}
+
+.hide-profile{
+  display: none;
+}

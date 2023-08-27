@@ -8,10 +8,15 @@ import profileIcon from "src/assets/Frame3.png";
 import { Link } from "react-router-dom";
 import { getUserData } from "src/helper";
 import './Header.scss';
+import Profile from "../ProfileInfo/Profile";
 
 const Header = () => {
-  const { setIsModalOpen, isAuth } = useContext(modalContext);
+  const { setIsModalOpen, isActive, setIsActive } = useContext(modalContext);
   const { jwt } = getUserData();
+
+  const toggleClassName = () => {
+    setIsActive(!isActive);
+  };
 
   return (
     <div className="big-container">
@@ -41,16 +46,22 @@ const Header = () => {
           </button>
           <div className="cutter2"></div>
           <Modal />
-          {!jwt ? <button className="h-profile">
-            <img
+          <Profile />
+          <button className="h-profile">
+            <img src={profileIcon}
               onClick={() => {
-                if (!isAuth) {
-                  setIsModalOpen(true);
+                // !jwt ? setIsModalOpen(true) : toggleClassName()
+                if (!jwt) {
+                  setIsModalOpen(true)
                 }
-              }}
-              src={profileIcon}
+                else{
+                  toggleClassName()
+
+                }
+              }
+              }
             />
-          </button> : <span>Hello User</span> }
+          </button>
         </div>
       </div>
     </div>
