@@ -43,3 +43,39 @@ button {
     color: $secondary300;
   }
 }
+
+//BREAK-POINTS
+@media (max-width: 1024px) {
+  .feat-cat-card {
+    width: 124px !important;
+    min-width: 124px !important;
+    height: 143px;
+    img{
+      width: 42px;
+    }
+    h6{
+      font-size: 16px;
+    }
+    p{
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .feat-cat-card {
+    width: 120px !important;
+    min-width: 120px !important;
+    height: 126px;
+    img{
+      width: 32px;
+    }
+    h6{
+      font-size: 14px;
+      margin-top: 12px;
+    }
+    p{
+      font-size: 12px;
+    }
+  }
+}

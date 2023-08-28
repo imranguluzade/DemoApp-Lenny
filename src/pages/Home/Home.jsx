@@ -44,8 +44,8 @@ const Home = () => {
                     consectetur. Eu lorem est ullamcorper nisl amet non mollis.
                   </p>
                   <div className="hero-buttons">
-                    <Button text="Buy Now" variant="fill" />
-                    <Button text="View Detail" variant="outline" />
+                    <Button text="Buy Now" variant="fill" className="normal-btn" />
+                    <Button text="View Detail" variant="outline" className="normal-btn" />
                   </div>
                 </div>
                 <div className="right-hero-container"></div>
@@ -79,8 +79,8 @@ const Home = () => {
                     consectetur. Eu lorem est ullamcorper nisl amet non mollis.
                   </p>
                   <div className="hero-buttons">
-                    <Button text="Buy Now" variant="fill" />
-                    <Button text="View Detail" variant="outline" />
+                    <Button text="Buy Now" variant="fill" className="normal-btn"/>
+                    <Button text="View Detail" variant="outline" className="normal-btn"/>
                   </div>
                 </div>
                 <div className="right-hero-container"></div>
@@ -91,7 +91,7 @@ const Home = () => {
         <div className="featured-category container">
           <div className="category-cards-heading">
             <h2>Featured Category</h2>
-            <Button text="View Detail" variant="outline" size="sm" />
+            <Button text="View Detail" variant="outline" size="sm" className="sm-btn" />
           </div>
           <div className="categories-cards">
             <FeaturedCategCard />

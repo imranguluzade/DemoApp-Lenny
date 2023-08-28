@@ -11,7 +11,7 @@ body {
   font-family: $cg-main;
 }
 
-Link{
+Link {
   text-decoration: none;
 }
 
@@ -26,97 +26,159 @@ button {
 }
 
 .big-container {
-    width: 100%;
-    height: 88px;
-    background-color: white;
-    border-bottom: 1px solid #e4e9ee;
-  }
-  
-  .header-container {
-    height: 100%;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-  }
-  
-  .search-box {
-    width: 856px;
-    max-width: 856px;
-    height: 44px;
-    background-color: #f6f8fa;
-    display: flex;
-    align-items: center;
-    border-radius: 8px;
-    gap: 15px;
-  }
-  
-  .search-sort {
-    background-color: #f6f8fa;
-    width: 110px;
-    height: 22px;
-    font-weight: 500;
-    font-size: 14px;
-    border: 0px;
-    margin-left: 10px;
-    height: 100%;
+  width: 100%;
+  height: 88px;
+  background-color: white;
+  border-bottom: 1px solid #e4e9ee;
+}
+
+.header-container {
+  height: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  position: relative;
+}
+
+.search-box {
+  width: 856px;
+  max-width: 856px;
+  height: 44px;
+  background-color: #f6f8fa;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  gap: 5px;
+}
+
+.search-sort {
+  background-color: #f6f8fa;
+  width: 110px;
+  height: 22px;
+  font-weight: 500;
+  font-size: 14px;
+  border: 0px;
+  margin-left: 10px;
+  height: 100%;
+  cursor: pointer;
+}
+
+.search-text {
+  background-color: #f6f8fa;
+  border: 0px;
+  height: 20px;
+  color: #818b9c;
+  font-size: 14px;
+  font-weight: 500;
+  width: 100%;
+  height: 100%;
+  border-radius: 0px 8px 8px 0px;
+  border-left: 1px solid $dgray300;
+  padding-left: 20px;
+}
+
+.search-text,
+.search-sort:focus {
+  outline: none;
+}
+
+.pp-basket {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.cutter2 {
+  height: 24px;
+  background-color: #e4e9ee;
+  width: 1px;
+}
+
+.search-logo {
+  padding-right: 15px;
+  background-color: transparent;
+  border: 0px;
+  cursor: pointer;
+}
+
+.h-profile {
+  background-color: transparent;
+  border: 0px;
+  img {
     cursor: pointer;
   }
-  
-  .search-text {
-    background-color: #f6f8fa;
-    border: 0px;
-    height: 20px;
-    color: #818b9c;
-    font-size: 14px;
-    font-weight: 500;
-    width: 100%;
-    height: 100%;
-    border-radius: 0px 8px 8px 0px;
-  }
-  
-  .search-text,
-  .search-sort:focus {
-    outline: none;
-  }
-  
-  .cutter {
-    height: 20px;
-    background-color: #e4e9ee;
-    width: 1px;
-  }
-  
-  .pp-basket {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .cutter2 {
-    height: 24px;
-    background-color: #e4e9ee;
-    width: 1px;
-  }
-  
-  .search-logo {
-    padding-right: 15px;
+}
+
+.h-basket {
+  background-color: transparent;
+  border: 0px;
+  cursor: pointer;
+}
+
+.notification-icons {
+  @include d-flex;
+  gap: 16px;
+  button {
     background-color: transparent;
     border: 0px;
-    cursor: pointer;
   }
-  
-  .h-profile {
-    background-color: transparent;
-    border: 0px;
-    img {
-      cursor: pointer;
+}
+
+//BREAK-POINT
+@media (max-width: 1024px) {
+  .big-container {
+    height: 76px;
+    .search-sort {
+      @include p2-medium;
+    }
+    .search-text {
+      @include p2-medium;
+    }
+    .pp-basket {
+      gap: 12px;
+    }
+    .notification-icons {
+      gap: 12px;
+    }
+    .header-container {
+      gap: 25px;
     }
   }
-  
-  .h-basket {
-    background-color: transparent;
-    border: 0px;
-    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .h-logo {
+    display: none;
   }
+  .big-container {
+    height: 60px;
+    .search-box {
+      height: 34px;
+    }
+    .search-sort {
+      display: none;
+    }
+
+    .search-text {
+      @include p2-medium;
+      border-left: 0px;
+      border-radius: 8px;
+    }
+    .pp-basket {
+      gap: 8px;
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    .notification-icons {
+      gap: 8px;
+    }
+    .header-container {
+      gap: 8px;
+    }
+  }
+}

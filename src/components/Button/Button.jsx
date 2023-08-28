@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { useContext } from "react";
-import { modalContext } from "src/context/ModalProvider";
+import "src/components/Button/Button.scss";
 
 const Button = (props) => {
   const buttonStyle = {
@@ -31,7 +30,6 @@ const Button = (props) => {
   //   color: props.variant === "fill" ? "white" : "#1E4C2F",
   //   border: props.variant === "outline" ? "0px" : "1px solid #1E4C2F",
   // };
-  const { isLogin, setIsLogin } = useContext(modalContext);
 
   return (
     <>
