@@ -6,6 +6,10 @@
 @media (max-width: 1024px) {
   .normal-btn {
     width: 180px !important;
+    height: 48px !important;
+  }
+  .full-btn {
+    width: 180px !important;
     height: 50px !important;
   }
   .sm-btn{
@@ -14,10 +18,15 @@
   }
 }
 
-@media (max-width: 769px) {
+@media (max-width: 768px) {
     .normal-btn {
-      width: 100% !important;
+      width: 131px !important;
       height: 48px !important;
+      font-size: 14px !important;
+    }
+    .full-btn {
+      width: 100% !important;
+      height: 50px !important;
     }
     .sm-btn{
         width: 94px !important;

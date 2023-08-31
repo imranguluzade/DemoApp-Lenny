@@ -44,8 +44,8 @@ const Home = () => {
                     consectetur. Eu lorem est ullamcorper nisl amet non mollis.
                   </p>
                   <div className="hero-buttons">
-                    <Button text="Buy Now" variant="fill" className="normal-btn" />
-                    <Button text="View Detail" variant="outline" className="normal-btn" />
+                    <Button text="Buy Now" variant="fill" className="full-btn" />
+                    <Button text="View Detail" variant="outline" className="full-btn" />
                   </div>
                 </div>
                 <div className="right-hero-container"></div>
@@ -79,8 +79,8 @@ const Home = () => {
                     consectetur. Eu lorem est ullamcorper nisl amet non mollis.
                   </p>
                   <div className="hero-buttons">
-                    <Button text="Buy Now" variant="fill" className="normal-btn"/>
-                    <Button text="View Detail" variant="outline" className="normal-btn"/>
+                    <Button text="Buy Now" variant="fill" className="normal-btn" />
+                    <Button text="View Detail" variant="outline" className="normal-btn" />
                   </div>
                 </div>
                 <div className="right-hero-container"></div>
@@ -94,15 +94,6 @@ const Home = () => {
             <Button text="View Detail" variant="outline" size="sm" className="sm-btn" />
           </div>
           <div className="categories-cards">
-            <FeaturedCategCard />
-            <FeaturedCategCard />
-            <FeaturedCategCard />
-            <FeaturedCategCard />
-            <FeaturedCategCard />
-            <FeaturedCategCard />
-            <FeaturedCategCard />
-            <FeaturedCategCard />
-            <FeaturedCategCard />
             <FeaturedCategCard />
           </div>
         </div>
@@ -139,7 +130,7 @@ const Home = () => {
             </Link>
           </div>
           <div className="load-more-product">
-            <Button text="Load More" variant="outline" />
+            <Button text="Load More" variant="outline" className="normal-btn" />
           </div>
         </div>
         <div className="advertising-product container">
@@ -151,15 +142,15 @@ const Home = () => {
               sapien quam risus sed diam.
             </p>
             <div className="button-box">
-              <Button text="Buy $900" variant="fill" />
-              <Button text="View Detail" variant="outline" />
+              <Button text="Buy $900" variant="fill" className="full-btn" />
+              <Button text="View Detail" variant="outline" className="full-btn" />
             </div>
           </div>
         </div>
         <div className="lennys-article container">
           <div className="article-heading">
             <h2>Lenny’s Article</h2>
-            <Button text="View Detail" variant="outline" size="sm" />
+            <Button text="View Detail" variant="outline" size="sm" className="sm-btn" />
           </div>
           <div className="article-cards-container">
             <ArcticleCard />
