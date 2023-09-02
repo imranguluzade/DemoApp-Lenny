@@ -25,11 +25,6 @@ const Button = (props) => {
     fontWeight: props.size === "sm" ? "600" : "600",
     transition: "background-color 0.4s, color 0.4s, border 0.4s",
   };
-  // const hoverStyle = {
-  //   backgroundColor: props.variant === "fill" ? "#1E4C2F" : "transparent",
-  //   color: props.variant === "fill" ? "white" : "#1E4C2F",
-  //   border: props.variant === "outline" ? "0px" : "1px solid #1E4C2F",
-  // };
 
   return (
     <>
@@ -38,16 +33,6 @@ const Button = (props) => {
         onClick={props.action ? props.action : null}
         className={props.className}
         type={props.type}
-      // onMouseEnter={(e) => {
-      //   e.target.style.backgroundColor = hoverStyle.backgroundColor;
-      //   e.target.style.color = hoverStyle.color;
-      //   e.target.style.border = hoverStyle.border;
-      // }}
-      // onMouseLeave={(e) => {
-      //   e.target.style.backgroundColor = buttonStyle.backgroundColor;
-      //   e.target.style.color = buttonStyle.color;
-      //   e.target.style.border = buttonStyle.border;
-      // }}
       >
         {props.text}
       </button>

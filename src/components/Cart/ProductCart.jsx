@@ -6,10 +6,9 @@ import starIcon from "src/assets/star.png";
 import axios from "axios";
 import "./Cart.scss";
 
-const PopularProdCart = (props) => {
+const ProductCart = () => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [products, setProducts] = useState([]);
-  const { visibleProducts } = useContext(modalContext);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -25,22 +24,14 @@ const PopularProdCart = (props) => {
     getProducts();
   }, []);
 
-  const popularProducts = products.filter(
-    (product) => product?.attributes?.solds > 1000
-  );
-
-  const productsToShow = popularProducts.slice(0, visibleProducts);
-  console.log();
-
   const toggleClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
     !isFavorite ? setIsFavorite(true) : setIsFavorite(false);
   };
-
   return (
     <>
-      {productsToShow.map((product) => (
+      {products.map((product) => (
         <Link to="/product-detail" key={product.id}>
           <div className="pop-prod-cart">
             <div className="pop-prod-image">
@@ -101,4 +92,4 @@ const PopularProdCart = (props) => {
   );
 };
 
-export default PopularProdCart;
+export default ProductCart;

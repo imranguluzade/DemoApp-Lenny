@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home/Home";
 import ProductDetail from "./pages/ProductDetails/ProductDetail";
+import SearchResults from "./pages/SearchResults/SearchResults";
 import ProtectedRoutes from "./routes/ProtectedRoutes";
 
 const App = () => {
@@ -12,6 +13,7 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/search-results" element={<SearchResults />} />
 
         <Route element={<ProtectedRoutes />}>
           <Route path="/product-detail" element={<ProductDetail />} />
@@ -23,9 +25,3 @@ const App = () => {
 };
 
 export default App;
-
-
-
-
-
-

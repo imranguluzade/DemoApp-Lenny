@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "../../components/Button/Button";
 import ArcticleCard from "../../components/ArticleCard/ArcticleCard";
 import PopularProdCart from "../../components/Cart/PopularProdCart";
@@ -7,10 +7,16 @@ import HeroImage from "src/assets/image4.png";
 import CardsArrow from "src/assets/Frame 46.png";
 import CardsWay from "src/assets/Frame 48.png";
 import advertProduct from "src/assets/iPad Air 2020.png";
+import { modalContext } from "src/context/ModalProvider";
 import { Carousel } from "antd";
 import { Link } from "react-router-dom";
 import "./Home.scss";
 const Home = () => {
+  const { visibleProducts, setVisibleProducts } = useContext(modalContext);
+
+  const action = () => {
+    setVisibleProducts(visibleProducts + 4);
+  };
   return (
     <>
       <div className="home-page-container">
@@ -28,7 +34,7 @@ const Home = () => {
                   <img className="hero-cards-arrow" src={CardsArrow} />
                   <img className="hero-cards-way" src={CardsWay} />
                   <Link to="/product-detail">
-                    <PopularProdCart className="pop-card" />
+                    <PopularProdCart className="pop-card"/>
                   </Link>
                   <Link to="/product-detail">
                     <PopularProdCart className="pop-card" />
@@ -44,8 +50,16 @@ const Home = () => {
                     consectetur. Eu lorem est ullamcorper nisl amet non mollis.
                   </p>
                   <div className="hero-buttons">
-                    <Button text="Buy Now" variant="fill" className="full-btn" />
-                    <Button text="View Detail" variant="outline" className="full-btn" />
+                    <Button
+                      text="Buy Now"
+                      variant="fill"
+                      className="full-btn"
+                    />
+                    <Button
+                      text="View Detail"
+                      variant="outline"
+                      className="full-btn"
+                    />
                   </div>
                 </div>
                 <div className="right-hero-container"></div>
@@ -79,8 +93,16 @@ const Home = () => {
                     consectetur. Eu lorem est ullamcorper nisl amet non mollis.
                   </p>
                   <div className="hero-buttons">
-                    <Button text="Buy Now" variant="fill" className="normal-btn" />
-                    <Button text="View Detail" variant="outline" className="normal-btn" />
+                    <Button
+                      text="Buy Now"
+                      variant="fill"
+                      className="normal-btn"
+                    />
+                    <Button
+                      text="View Detail"
+                      variant="outline"
+                      className="normal-btn"
+                    />
                   </div>
                 </div>
                 <div className="right-hero-container"></div>
@@ -91,7 +113,12 @@ const Home = () => {
         <div className="featured-category container">
           <div className="category-cards-heading">
             <h2>Featured Category</h2>
-            <Button text="View Detail" variant="outline" size="sm" className="sm-btn" />
+            <Button
+              text="View Detail"
+              variant="outline"
+              size="sm"
+              className="sm-btn"
+            />
           </div>
           <div className="categories-cards">
             <FeaturedCategCard />
@@ -104,33 +131,17 @@ const Home = () => {
           </p>
 
           <div className="pop-products-cards">
-            <Link to="/product-detail">
-              <PopularProdCart className="pop-card" />
-            </Link>
-            <Link to="/product-detail">
-              <PopularProdCart className="pop-card" />
-            </Link>
-            <Link to="/product-detail">
-              <PopularProdCart className="pop-card" />
-            </Link>
-            <Link to="/product-detail">
-              <PopularProdCart className="pop-card" />
-            </Link>
-            <Link to="/product-detail">
-              <PopularProdCart className="pop-card" />
-            </Link>
-            <Link to="/product-detail">
-              <PopularProdCart className="pop-card" />
-            </Link>
-            <Link to="/product-detail">
-              <PopularProdCart className="pop-card" />
-            </Link>
-            <Link to="/product-detail">
-              <PopularProdCart className="pop-card" />
-            </Link>
+            <PopularProdCart className="pop-card" />
           </div>
           <div className="load-more-product">
-            <Button text="Load More" variant="outline" className="normal-btn" />
+            {visibleProducts < 12 && (
+              <Button
+                action={action}
+                text="Load More"
+                variant="outline"
+                className="normal-btn"
+              />
+            )}
           </div>
         </div>
         <div className="advertising-product container">
@@ -143,14 +154,23 @@ const Home = () => {
             </p>
             <div className="button-box">
               <Button text="Buy $900" variant="fill" className="full-btn" />
-              <Button text="View Detail" variant="outline" className="full-btn" />
+              <Button
+                text="View Detail"
+                variant="outline"
+                className="full-btn"
+              />
             </div>
           </div>
         </div>
         <div className="lennys-article container">
           <div className="article-heading">
             <h2>Lenny’s Article</h2>
-            <Button text="View Detail" variant="outline" size="sm" className="sm-btn" />
+            <Button
+              text="View Detail"
+              variant="outline"
+              size="sm"
+              className="sm-btn"
+            />
           </div>
           <div className="article-cards-container">
             <ArcticleCard />
