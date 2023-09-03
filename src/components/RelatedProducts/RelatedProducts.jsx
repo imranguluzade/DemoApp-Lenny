@@ -12,9 +12,6 @@ const RelatedProducts = () => {
       </div>
       <div className="related-products-cards">
         <PopularProdCart />
-        <PopularProdCart />
-        <PopularProdCart />
-        <PopularProdCart />
       </div>
     </div>
   );

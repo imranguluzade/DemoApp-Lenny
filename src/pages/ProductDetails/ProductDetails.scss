@@ -107,10 +107,4 @@ button {
 .tab-lists {
   margin-top: 52px;
   margin-bottom: 38px;
-
-  :where(.css-dev-only-do-not-override-byeoj0).ant-tabs
-    .ant-tabs-tab.ant-tabs-tab-active
-    .ant-tabs-tab-btn {
-    color: $primary300;
-  }
 }

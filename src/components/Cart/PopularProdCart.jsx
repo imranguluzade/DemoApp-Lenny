@@ -41,8 +41,7 @@ const PopularProdCart = (props) => {
   return (
     <>
       {productsToShow.map((product) => (
-        <Link to="/product-detail" key={product.id}>
-          <div className="pop-prod-cart">
+          <div className="pop-prod-cart"  key={product.id}>
             <div className="pop-prod-image">
               <img
                 src={`${import.meta.env.VITE_APP_STRAPI_BASE_URL}${
@@ -95,7 +94,6 @@ const PopularProdCart = (props) => {
               </span>
             </div>
           </div>
-        </Link>
       ))}
     </>
   );

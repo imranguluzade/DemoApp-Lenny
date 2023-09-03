@@ -8,6 +8,8 @@ import Tabs from "../../components/Tabs/Tabs";
 import ShoppingChart from "src/assets/shopping-cart.png";
 import { Link } from "react-router-dom";
 import './ProductDetails.scss'
+import Pagination from "src/components/Pagination/Pagination";
+import { Comments } from "src/components/Comments/Comments";
 
 const ProductDetail = () => {
   const scrollToTop = () => {
@@ -79,6 +81,10 @@ const ProductDetail = () => {
       </div>
       <div className="tab-lists container">
         <Tabs />
+      </div>
+      <div className="container">
+        <Comments />
+        <Pagination />
       </div>
       <RelatedProducts />
     </div>

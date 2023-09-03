@@ -5,14 +5,15 @@ import "./FeaturedCategCard.scss";
 
 const FeaturedCategCard = () => {
   const [categories, setCategories] = useState([]);
-  console.log(categories);
+
+
+
 
   useEffect(() => {
     const getCategories = async () => {
       try {
         const { data } = await axios.get(
-          `${
-            import.meta.env.VITE_APP_STRAPI_BASE_URL
+          `${import.meta.env.VITE_APP_STRAPI_BASE_URL
           }/api/categories?populate=*`
         );
         setCategories(data.data);
@@ -27,18 +28,15 @@ const FeaturedCategCard = () => {
   return (
     <>
       {categories.map((item) => (
-        <Link to="/search-results">
-          <div key={item.id} className="feat-cat-card">
-            <img
-              src={`${import.meta.env.VITE_APP_STRAPI_BASE_URL}${
-                item?.attributes?.icon.data.attributes?.url
+        <div key={item.id} className="feat-cat-card">
+          <img
+            src={`${import.meta.env.VITE_APP_STRAPI_BASE_URL}${item?.attributes?.icon.data.attributes?.url
               }`}
-              alt="Category Logo"
-            />
-            <h6>{item.attributes.name}</h6>
-            <p>8,9k products</p>
-          </div>
-        </Link>
+            alt="Category Logo"
+          />
+          <h6>{item.attributes.name}</h6>
+          <p>8,9k products</p>
+        </div>
       ))}
     </>
   );
