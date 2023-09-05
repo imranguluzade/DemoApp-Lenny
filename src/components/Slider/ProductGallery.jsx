@@ -1,22 +1,16 @@
-import React, { useRef, useState} from "react";
+import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import firstProductImg from "src/assets/Untitled-1 1.png";
-import secondProductImg from "src/assets/Untitled-1 3.png";
-import thirdProductImg from "src/assets/Untitled-1 4.png";
-import fourthProductImg from "src/assets/Untitled-1 2.png";
 import './ProductGallery.scss';
-
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-
-// import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 
-const ProductGallery = () => {
+const ProductGallery = ({ product }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const firstElementRef = useRef(null);
+
   return (
     <>
       <Swiper
@@ -30,18 +24,11 @@ const ProductGallery = () => {
         modules={[FreeMode, Navigation, Thumbs]}
         className="mySwiper2"
       >
-        <SwiperSlide>
-          <img className="swiper-slide-img" src={firstProductImg} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img className="swiper-slide-img" src={secondProductImg} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img className="swiper-slide-img" src={thirdProductImg} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img className="swiper-slide-img" src={fourthProductImg} />
-        </SwiperSlide>
+        {product[0]?.attributes?.images?.data?.map((image) => (
+          <SwiperSlide key={image.id}>
+            <img className="swiper-slide-img" src={`http://localhost:1337${image?.attributes?.url}`} />
+          </SwiperSlide>
+        ))}
       </Swiper>
       <Swiper
         onClick={setThumbsSwiper}
@@ -52,18 +39,11 @@ const ProductGallery = () => {
         modules={[FreeMode, Navigation, Thumbs]}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <img className="mouse-1-img" src={firstProductImg} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={secondProductImg} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={thirdProductImg} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={fourthProductImg} />
-        </SwiperSlide>
+        {product[0]?.attributes?.images?.data?.map((image) => (
+          <SwiperSlide key={image.id}>
+            <img className="prod-slider-thumbnail" src={`http://localhost:1337${image?.attributes?.url}`} />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </>
   );

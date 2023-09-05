@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../../components/Button/Button";
 import ArcticleCard from "../../components/ArticleCard/ArcticleCard";
 import PopularProdCart from "../../components/Cart/PopularProdCart";
@@ -7,16 +7,46 @@ import HeroImage from "src/assets/image4.png";
 import CardsArrow from "src/assets/Frame 46.png";
 import CardsWay from "src/assets/Frame 48.png";
 import advertProduct from "src/assets/iPad Air 2020.png";
-import { modalContext } from "src/context/ModalProvider";
+import { useNavigate } from "react-router-dom";
 import { Carousel } from "antd";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import "./Home.scss";
 const Home = () => {
-  const { visibleProducts, setVisibleProducts } = useContext(modalContext);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [products, setProducts] = useState([]);
+  const [showProducts, setShowProducts] = useState(8);
+  const navigate = useNavigate();
+
+
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_APP_STRAPI_BASE_URL}/api/products?pagination[page]=1&pagination[pageSize]=${showProducts}&populate=*`
+        );
+        setProducts(data.data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+    getProducts();
+  }, [showProducts]);
+
+  const toggleClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    !isFavorite ? setIsFavorite(true) : setIsFavorite(false);
+  };
 
   const action = () => {
-    setVisibleProducts(visibleProducts + 4);
-  };
+    navigate("search-results")
+  }
+
+  const showMore = () => {
+    setShowProducts(showProducts + 4);
+  }
+
   return (
     <>
       <div className="home-page-container">
@@ -34,10 +64,9 @@ const Home = () => {
                   <img className="hero-cards-arrow" src={CardsArrow} />
                   <img className="hero-cards-way" src={CardsWay} />
                   <Link to="/product-detail">
-                    <PopularProdCart className="pop-card"/>
-                  </Link>
-                  <Link to="/product-detail">
-                    <PopularProdCart className="pop-card" />
+                    {products.map((product) => (
+                      <PopularProdCart product={product} isFavorite={isFavorite} toggleClick={toggleClick} key={product.id} />
+                    ))}
                   </Link>
                 </div>
               </div>
@@ -56,6 +85,7 @@ const Home = () => {
                       className="full-btn"
                     />
                     <Button
+                      action={action}
                       text="View Detail"
                       variant="outline"
                       className="full-btn"
@@ -77,10 +107,9 @@ const Home = () => {
                   <img className="hero-cards-arrow" src={CardsArrow} />
                   <img className="hero-cards-way" src={CardsWay} />
                   <Link to="/product-detail">
-                    <PopularProdCart className="pop-card" />
-                  </Link>
-                  <Link to="/product-detail">
-                    <PopularProdCart className="pop-card" />
+                    {products.map((product) => (
+                      <PopularProdCart product={product} isFavorite={isFavorite} toggleClick={toggleClick} key={product.id} />
+                    ))}
                   </Link>
                 </div>
               </div>
@@ -114,6 +143,7 @@ const Home = () => {
           <div className="category-cards-heading">
             <h2>Featured Category</h2>
             <Button
+              action={action}
               text="View Detail"
               variant="outline"
               size="sm"
@@ -130,18 +160,21 @@ const Home = () => {
             Lorem ipsum dolor sit amet consectetur. Integer cursus cursus in
           </p>
 
+
           <div className="pop-products-cards">
-            <PopularProdCart className="pop-card" />
+            {products.map((product) => (
+              <Link to={`/product-detail/${product.id}`} key={product.id}>
+                <PopularProdCart product={product} isFavorite={isFavorite} toggleClick={toggleClick} />
+              </Link>
+            ))}
           </div>
           <div className="load-more-product">
-            {visibleProducts < 12 && (
-              <Button
-                action={action}
-                text="Load More"
-                variant="outline"
-                className="normal-btn"
-              />
-            )}
+            {showProducts < 12 && <Button
+              action={showMore}
+              text="Load More"
+              variant="outline"
+              className="normal-btn"
+            />}
           </div>
         </div>
         <div className="advertising-product container">

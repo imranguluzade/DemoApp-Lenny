@@ -24,3 +24,48 @@ Link {
 button {
   cursor: pointer;
 }
+
+.filter-and-products {
+  @include d-flex(row, center, flex-start);
+  gap: 40px;
+  margin-top: 52px;
+}
+
+.pop-products {
+  padding-top: 60px !important;
+}
+
+.products-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 24px;
+  margin-top: 0px !important;
+  margin-bottom: 52px;
+}
+
+.filter-option {
+  width: 278px !important;
+  border: 1px solid $dgray300;
+  border-radius: 12px;
+  .filter-heading {
+    @include h6;
+    border-bottom: 1px solid $dgray300;
+    margin-left: 24px;
+    padding-top: 24px;
+    padding-bottom: 16px;
+    width: 230px;
+  }
+}
+
+
+.ant-menu-title-content {
+  margin-left: 0px !important;
+  @include h3-xs;
+}
+
+ul li ul li div span{
+  color: $secondary300;
+  @include p1-regular;
+}
+
+

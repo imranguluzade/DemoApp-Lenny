@@ -9,7 +9,7 @@ const initialUser = { username: "", email: "", password: "" }
 
 const SignUp = () => {
 
-  const { isLogin, setIsLogin } = useContext(modalContext);
+  const { setIsLogin } = useContext(modalContext);
 
   const [user, setUser] = useState(initialUser);  
 

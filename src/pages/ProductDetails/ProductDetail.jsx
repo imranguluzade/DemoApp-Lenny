@@ -1,24 +1,40 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Breadcrumb } from "antd";
 import star from "src/assets/star.png";
 import Button from "../../components/Button/Button";
 import RelatedProducts from "../../components/RelatedProducts/RelatedProducts";
 import ProductGallery from "../../components/Slider/ProductGallery";
 import Tabs from "../../components/Tabs/Tabs";
-import ShoppingChart from "src/assets/shopping-cart.png";
-import { Link } from "react-router-dom";
 import './ProductDetails.scss'
 import Pagination from "src/components/Pagination/Pagination";
 import { Comments } from "src/components/Comments/Comments";
+import { useParams } from "react-router-dom";
 
 const ProductDetail = () => {
+  const id = useParams().id
+  const [product, setProduct] = useState({});
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+  
 
   useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const {
+          data: { data },
+        } = await axios.get(`${import.meta.env.VITE_APP_STRAPI_BASE_URL}/api/products?populate=*&filters[id][$in][0]=${id}`);
+        setProduct(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    if (id) {
+      fetchCategories()
+    }
     scrollToTop();
-  }, []);
+  }, [id]);
 
   return (
     <div>
@@ -42,16 +58,16 @@ const ProductDetail = () => {
       </div>
       <div className="product-main-details  container">
         <div className="product-gallery">
-          <ProductGallery />
+          <ProductGallery product={product}/>
         </div>
         <div className="product-name">
-          <h2>G502 X Lightspeed Wireless Gaming Mouse</h2>
+          <h2>{product[0]?.attributes?.name}</h2>
           <div className="stars-solds">
             <img src={star} />
             <p className="star-point">4,8</p>
             <p className="solds">1,238 Sold</p>
           </div>
-          <h4 className="product-price">$139.99</h4>
+          <h4 className="product-price">{product[0]?.attributes?.price}$</h4>
           <p className="product-description">
             G502 X LIGHTSPEED is the latest addition to legendary G502 lineage.
             Featuring our first-ever LIGHTFORCE hybrid optical-mechanical
