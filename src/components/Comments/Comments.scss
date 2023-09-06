@@ -34,6 +34,11 @@ Link {
   margin-top: 16px;
 }
 
+.comment-container{
+  border-bottom: 1px solid $dgray300;
+  padding-bottom: 32px;
+}
+
 .comment-date {
   @include p1-regular-xs;
   color: $secondary300;
@@ -79,3 +84,14 @@ Link {
     height: 48px;
   }
 }
+
+.new-comment-component{
+  margin-top: 40px;
+  .input-form{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+}
+
+

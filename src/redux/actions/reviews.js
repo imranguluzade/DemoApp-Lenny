@@ -8,7 +8,7 @@ export const getReviews = createAsyncThunk(
       const result = await axios.get(
         `${
           import.meta.env.VITE_APP_STRAPI_BASE_URL
-        }/api/review?filters[productID][$eq]=${id}`
+        }/api/reviews?filters[productID][$eq]=${id}`
       );
       return result.data.data;
     } catch (error) {

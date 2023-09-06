@@ -20,7 +20,7 @@ const Button = (props) => {
                 ? "100%"
                 : "200px",
     height:
-      props.size === "xxs" ? "38px" : "sm" ? "45px" : "lg" ? "53px" : "53px",
+      props.size === "xxs" ? "38px" : "sm" ? "46px" : "lg" ? "53px" : "53px",
     fontSize: props.size === "lg" || "xxs" ? "16px" : "sm" ? "18px" : "18px",
     fontWeight: props.size === "sm" ? "600" : "600",
     transition: "background-color 0.4s, color 0.4s, border 0.4s",

@@ -10,7 +10,14 @@ const initialState = {
 export const reviewsSlice = createSlice({
   name: "reviews",
   initialState,
-  reducers: {},
+  reducers: {
+    addReview(state, { payload }) {
+      state.data.push(payload);
+    },
+    deleteReview(state, { payload }) {
+      state.data = state.data.filter((item) => item.id !== payload);
+    },
+  },
   extraReducers: {
     [getReviews.pending]: (state) => {
       state.loading = true;
@@ -25,5 +32,7 @@ export const reviewsSlice = createSlice({
     },
   },
 });
+
+export const { addReview, deleteReview } = reviewsSlice.actions;
 
 export default reviewsSlice.reducer;

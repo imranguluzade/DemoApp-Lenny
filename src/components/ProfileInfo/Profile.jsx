@@ -4,17 +4,21 @@ import { modalContext } from "../../context/ModalProvider";
 import "src/components/ProfileInfo/Profile.scss"
 import { storeUser } from "src/helper";
 import profileImg from "src/assets/Frame3.png"
+import { getUserData } from "src/helper"
+
+const { user } = getUserData()
 
 const Profile = () => {
     const { setIsActive, isActive } = useContext(modalContext);
+    
     return (
         
             <div className={`${isActive ? 'profile-details' : 'hide-profile'}`}>
                 <div className='user-info'>
                     <img src={profileImg} />
                     <div className='user-name-email'>
-                        <span className="username">Username</span>
-                        <span className="user-gmail">Gmail adress</span>
+                        <span className="username">{user?.username}</span>
+                        <span className="user-gmail">{user?.email}</span>
                     </div>
                 </div>
                 <div className="user-options">

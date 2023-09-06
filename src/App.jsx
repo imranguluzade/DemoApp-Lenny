@@ -14,9 +14,10 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/search-results/:id" element={<SearchResults />} />
+        <Route path="/product-detail/:id" element={<ProductDetail />} />
 
         <Route element={<ProtectedRoutes />}>
-          <Route path="/product-detail/:id" element={<ProductDetail />} />
+
         </Route>
       </Routes>
       <Footer />

@@ -14,10 +14,11 @@ import { useParams } from "react-router-dom";
 const ProductDetail = () => {
   const id = useParams().id
   const [product, setProduct] = useState({});
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-  
+
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -47,18 +48,22 @@ const ProductDetail = () => {
               href: "/",
             },
             {
-              title: "Electronic",
+              title: `${product[0]?.attributes?.categories?.data[0]?.attributes?.name}`,
               href: "",
             },
             {
-              title: "G502 x Lightspeed Wireless Gaming Mouse",
+              title: `${product[0]?.attributes?.sub_categories?.data[0]?.attributes?.name}`,
+              href: "",
+            },
+            {
+              title: `${product[0]?.attributes?.name}`,
             },
           ]}
         />
       </div>
       <div className="product-main-details  container">
         <div className="product-gallery">
-          <ProductGallery product={product}/>
+          <ProductGallery product={product} />
         </div>
         <div className="product-name">
           <h2>{product[0]?.attributes?.name}</h2>

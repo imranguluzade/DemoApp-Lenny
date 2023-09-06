@@ -26,7 +26,8 @@ button {
 }
 
 .bread-crumb {
-  margin-top: 60px;
+  margin-top: 30px !important;
+  margin-bottom: 32px !important;
   .ant-breadcrumb-link {
     font-family: $cg-main;
     color: $primary100;
