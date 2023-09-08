@@ -20,7 +20,6 @@ const SearchResults = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // /api/categories?filters[id][$in][0]=${catID}
 
   useEffect(() => {
     const getProducts = async () => {
@@ -62,6 +61,11 @@ const SearchResults = () => {
             },
           ]}
         />
+      </div>
+      <div className="product-info container">
+        <div>
+          <p>Showing products for {}</p>
+        </div>
       </div>
       <div className="filter-and-products">
         <div className="filter-option">

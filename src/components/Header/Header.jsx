@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import Modal from "../Modal/Modal";
 import { modalContext } from "../../context/ModalProvider";
 import logoImage from "src/assets/Logo.png";
@@ -9,12 +9,39 @@ import notificationIcon from "src/assets/notification.png";
 import smsIcon from "src/assets/sms.png";
 import { Link } from "react-router-dom";
 import { getUserData } from "src/helper";
+import axios from "axios";
 import './Header.scss';
 import Profile from "../ProfileInfo/Profile";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate()
   const { setIsModalOpen, isActive, setIsActive } = useContext(modalContext);
   const { jwt } = getUserData();
+  const [categories, setCategories] = useState([]);
+
+
+
+  useEffect(() => {
+    const getCategories = async () => {
+      try {
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_APP_STRAPI_BASE_URL
+          }/api/categories?populate=*`
+        );
+        setCategories(data.data);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+
+    getCategories();
+  }, []);
+
+  const handleCategory = (e) => {
+    const selectedCategory = e.target.value;
+    navigate(`/search-results/${category.id}`)
+  }
 
   const toggleClassName = () => {
     setIsActive(!isActive);
@@ -33,7 +60,12 @@ const Header = () => {
         </div>
         <div className="search-box">
           <select className="search-sort">
-            <option>All Categories</option>
+            <option value="default">All Categories</option>
+            {categories.map((category) => (
+              <option key={category.id} value={category.attributes.name} onChange={() => (()=>{handleCategory(category)})}>
+                {category.attributes.name}
+              </option>
+            ))}
           </select>
           <input
             className="search-text"
