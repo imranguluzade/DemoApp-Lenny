@@ -1,108 +1,54 @@
-import React, { useState } from 'react';
-import { Tree } from 'antd';
-
-const treeData = [
-    {
-        title: 'category',
-        key: '0-0',
-        children: [
-            {
-                title: '0-0-0',
-                key: '0-0-0',
-                children: [
-                    {
-                        title: '0-0-0-0',
-                        key: '0-0-0-0',
-                    },
-                    {
-                        title: '0-0-0-1',
-                        key: '0-0-0-1',
-                    },
-                    {
-                        title: '0-0-0-2',
-                        key: '0-0-0-2',
-                    },
-                ],
-            },
-            {
-                title: '0-0-1',
-                key: '0-0-1',
-                children: [
-                    {
-                        title: '0-0-1-0',
-                        key: '0-0-1-0',
-                    },
-                    {
-                        title: '0-0-1-1',
-                        key: '0-0-1-1',
-                    },
-                    {
-                        title: '0-0-1-2',
-                        key: '0-0-1-2',
-                    },
-                ],
-            },
-            {
-                title: '0-0-2',
-                key: '0-0-2',
-            },
-        ],
-    },
-    {
-        title: '0-1',
-        key: '0-1',
-        children: [
-            {
-                title: '0-1-0-0',
-                key: '0-1-0-0',
-            },
-            {
-                title: '0-1-0-1',
-                key: '0-1-0-1',
-            },
-            {
-                title: '0-1-0-2',
-                key: '0-1-0-2',
-            },
-        ],
-    },
-    {
-        title: '0-2',
-        key: '0-2',
-    },
-];
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import './Cascader.scss'
+import { Checkbox } from 'antd';
+import { useNavigate } from "react-router-dom";
 
 
-export const SelectFilter = () => {
+export const SelectFilter = ({ catID }) => {
+    const [data, setData] = useState([]);
+    const [checkedCategoryId, setCheckedCategoryId] = useState(null);
+    const navigate = useNavigate();
 
-    const [expandedKeys, setExpandedKeys] = useState([]);
-    const [checkedKeys, setCheckedKeys] = useState([]);
-    const [selectedKeys, setSelectedKeys] = useState([]);
-    const [autoExpandParent, setAutoExpandParent] = useState(true);
-    const onExpand = (expandedKeysValue) => {
-        console.log('onExpand', expandedKeysValue);
-        setExpandedKeys(expandedKeysValue);
-        setAutoExpandParent(false);
-    };
-    const onCheck = (checkedKeysValue) => {
-        console.log('onCheck', checkedKeysValue);
-        setCheckedKeys(checkedKeysValue);
-    };
-    const onSelect = (selectedKeysValue, info) => {
-        console.log('onSelect', info);
-        setSelectedKeys(selectedKeysValue);
-    };
+    useEffect(() => {
+        const getCategories = async () => {
+            try {
+                const { data } = await axios.get(
+                    `${import.meta.env.VITE_APP_STRAPI_BASE_URL
+                    }/api/categories?populate=*`
+                );
+                setData(data.data);
+            } catch (error) {
+                console.error("Error fetching categories:", error);
+            }
+        };
+        getCategories();
+    }, []);
+    console.log(data);
+
+    const action = (category) => {
+        navigate(`/search-results/${category.id}`)
+        setCheckedCategoryId(category.id);
+    }
+
+    const handleSubChange = (subCategory) => {
+        
+    }
+
     return (
-        <Tree
-            checkable
-            onExpand={onExpand}
-            expandedKeys={expandedKeys}
-            autoExpandParent={autoExpandParent}
-            onCheck={onCheck}
-            checkedKeys={checkedKeys}
-            onSelect={onSelect}
-            selectedKeys={selectedKeys}
-            treeData={treeData}
-        />
+        <div className="checkbox-wrapper">
+            {data.map((category) => (
+                <div className="category-filter-checker" key={category.id}>
+                    <Checkbox checked={(checkedCategoryId === category.id)} onClick={() => { action(category) }} >{category?.attributes?.name}</Checkbox>
+                    <div className="sub-category-wrapper">
+                        {category?.attributes?.sub_categories?.data.map((subCategory) => (
+                            <div className="sub-category-checker" key={subCategory.id}>
+                                <Checkbox onClick={()=>handleSubChange(subCategory)}>{subCategory?.attributes?.name}</Checkbox>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            ))}
+        </div>
     );
 }

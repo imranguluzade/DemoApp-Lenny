@@ -25,24 +25,17 @@ button {
   cursor: pointer;
 }
 
-.category-filter-checker {
-    @include d-flex (column, center, flex-start);
-  gap: 5px;
-  padding-left: 24px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+:where(.css-dev-only-do-not-override-byeoj0).ant-progress
+  .ant-progress-success-bg,
+:where(.css-dev-only-do-not-override-byeoj0).ant-progress .ant-progress-bg {
+  background-color: $primary100 !important;
 }
 
-.checkbox-wrapper{
-    margin-top: 24px;
-    margin-bottom: 24px;
-}
-
-.sub-category-checker{
-
-}
-
-.sub-category-wrapper{
-    @include d-flex(column, center, flex-start);
-    padding-left: 20px;
+.flex-bar {
+  @include d-flex(row, space-between, center);
+  gap: 15px;
+  span{
+    @include d-flex;
+    gap: 5px;
+  }
 }

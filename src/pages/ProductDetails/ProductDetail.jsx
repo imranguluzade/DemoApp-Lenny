@@ -10,6 +10,7 @@ import './ProductDetails.scss'
 import Pagination from "src/components/Pagination/Pagination";
 import { Comments } from "src/components/Comments/Comments";
 import { useParams } from "react-router-dom";
+import Progress from "src/components/Progress/Progress";
 
 const ProductDetail = () => {
   const id = useParams().id
@@ -104,6 +105,7 @@ const ProductDetail = () => {
         <Tabs />
       </div>
       <div className="container">
+        <Progress/>
         <Comments />
         <Pagination />
       </div>

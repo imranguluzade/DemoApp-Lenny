@@ -23,7 +23,7 @@ const Home = () => {
     const getProducts = async () => {
       try {
         const { data } = await axios.get(
-          `${import.meta.env.VITE_APP_STRAPI_BASE_URL}/api/products?pagination[page]=1&pagination[pageSize]=${showProducts}&populate=*`
+          `${import.meta.env.VITE_APP_STRAPI_BASE_URL}/api/products?filters[solds][$gt]=1000&pagination[page]=1&pagination[pageSize]=${showProducts}&populate=*`
         );
         setProducts(data.data);
       } catch (error) {
@@ -63,11 +63,16 @@ const Home = () => {
                 >
                   <img className="hero-cards-arrow" src={CardsArrow} />
                   <img className="hero-cards-way" src={CardsWay} />
-                  <Link to="/product-detail">
-                    {products.map((product) => (
-                      <PopularProdCart product={product} isFavorite={isFavorite} toggleClick={toggleClick} key={product.id} />
-                    ))}
-                  </Link>
+                  {products.filter((product) => product?.attributes?.name === "Green Man Jacket").map((product) => (
+                    <Link to={`/product-detail/${product.id}`} key={product.id}>
+                      <PopularProdCart
+                        product={product}
+                        isFavorite={isFavorite}
+                        toggleClick={toggleClick}
+                        key={product.id}
+                      />
+                    </Link>
+                  ))}
                 </div>
               </div>
               <div className="hero-content">
@@ -106,11 +111,16 @@ const Home = () => {
                 >
                   <img className="hero-cards-arrow" src={CardsArrow} />
                   <img className="hero-cards-way" src={CardsWay} />
-                  <Link to="/product-detail">
-                    {products.map((product) => (
-                      <PopularProdCart product={product} isFavorite={isFavorite} toggleClick={toggleClick} key={product.id} />
-                    ))}
-                  </Link>
+                  {products.filter((product) => product?.attributes?.name === "Green Man Jacket").map((product) => (
+                    <Link to={`/product-detail/${product.id}`} key={product.id}>
+                      <PopularProdCart
+                        product={product}
+                        isFavorite={isFavorite}
+                        toggleClick={toggleClick}
+                        key={product.id}
+                      />
+                    </Link>
+                  ))}
                 </div>
               </div>
               <div className="hero-content">

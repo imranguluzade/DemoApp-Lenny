@@ -7,6 +7,7 @@ import { Breadcrumb } from "antd";
 import { SelectFilter } from "src/components/Cascader/SelectFilter";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const SearchResults = () => {
@@ -20,6 +21,7 @@ const SearchResults = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  console.log(data);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -36,7 +38,6 @@ const SearchResults = () => {
     getProducts();
     scrollToTop();
   }, [current, catID]);
-
   const onChange = (page) => {
     setCurrent(page);
   };
@@ -71,12 +72,14 @@ const SearchResults = () => {
         <div className="filter-option">
           <h6 className="filter-heading">Filter Option</h6>
           <div className="filter-category">
-            <SelectFilter />
+            <SelectFilter catID={catID}/>
           </div>
         </div>
         <div className="products-cards">
           {products.map((product) => (
-            <ProductCart product={product} isFavorite={isFavorite} toggleClick={toggleClick} key={product.id} />
+            <Link to={`/product-detail/${product.id}`} key={product.id}>
+              <ProductCart product={product} isFavorite={isFavorite} toggleClick={toggleClick} />
+            </Link>
           ))}
         </div>
       </div>
