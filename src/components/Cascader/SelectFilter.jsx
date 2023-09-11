@@ -5,10 +5,11 @@ import { Checkbox } from 'antd';
 import { useNavigate } from "react-router-dom";
 
 
-export const SelectFilter = ({ catID }) => {
+export const SelectFilter = ({ catID, products }) => {
     const [data, setData] = useState([]);
     const [checkedCategoryId, setCheckedCategoryId] = useState(null);
     const navigate = useNavigate();
+    console.log(products);
 
     useEffect(() => {
         const getCategories = async () => {
@@ -24,7 +25,6 @@ export const SelectFilter = ({ catID }) => {
         };
         getCategories();
     }, []);
-    console.log(data);
 
     const action = (category) => {
         navigate(`/search-results/${category.id}`)

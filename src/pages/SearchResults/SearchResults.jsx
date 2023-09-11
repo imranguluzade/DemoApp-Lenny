@@ -72,7 +72,7 @@ const SearchResults = () => {
         <div className="filter-option">
           <h6 className="filter-heading">Filter Option</h6>
           <div className="filter-category">
-            <SelectFilter catID={catID}/>
+            <SelectFilter catID={catID} products={products}/>
           </div>
         </div>
         <div className="products-cards">

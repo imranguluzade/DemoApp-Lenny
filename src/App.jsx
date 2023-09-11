@@ -6,6 +6,7 @@ import Home from "./pages/Home/Home";
 import ProductDetail from "./pages/ProductDetails/ProductDetail";
 import SearchResults from "./pages/SearchResults/SearchResults";
 import ProtectedRoutes from "./routes/ProtectedRoutes";
+import Basket from "src/pages/Basket/Basket"
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/search-results/:id" element={<SearchResults />} />
         <Route path="/product-detail/:id" element={<ProductDetail />} />
+        <Route path="/lenny-basket" element={<Basket />} />
 
         <Route element={<ProtectedRoutes />}>
 

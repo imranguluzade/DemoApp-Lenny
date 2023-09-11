@@ -38,14 +38,16 @@ const Header = () => {
     getCategories();
   }, []);
 
-  const handleCategory = (e) => {
-    const selectedCategory = e.target.value;
-    navigate(`/search-results/${category.id}`)
-  }
-
+  const handleCategory = (category) => {
+    navigate(`/search-results/${category}`);
+  };
   const toggleClassName = () => {
     setIsActive(!isActive);
   };
+
+  const getBasket = () => {
+    navigate("/lenny-basket")
+  }
 
   const btnRef = useRef();
 
@@ -62,7 +64,7 @@ const Header = () => {
           <select className="search-sort">
             <option value="default">All Categories</option>
             {categories.map((category) => (
-              <option key={category.id} value={category.attributes.name} onChange={() => (()=>{handleCategory(category)})}>
+              <option key={category.id} value={category.attributes.name} onChange={() => (() => { handleCategory(category) })}>
                 {category.attributes.name}
               </option>
             ))}
@@ -77,7 +79,7 @@ const Header = () => {
           </button>
         </div>
         <div className="pp-basket">
-          <button className="h-basket">
+          <button className="h-basket" onClick={getBasket}>
             <img src={basketIcon} />
           </button>
           {jwt && <div className="notification-icons">
