@@ -6,6 +6,7 @@ const ModalProvider = ({ children }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
   const [isActive, setIsActive] = useState(false);
+  const [filteredItems, setFilteredItems] = useState([]);
 
   const globalState = {
     isModalOpen,
@@ -14,6 +15,8 @@ const ModalProvider = ({ children }) => {
     setIsLogin,
     isActive,
     setIsActive,
+    filteredItems,
+    setFilteredItems,
   };
 
   return (

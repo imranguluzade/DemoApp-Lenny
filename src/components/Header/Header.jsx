@@ -10,23 +10,59 @@ import smsIcon from "src/assets/sms.png";
 import { Link } from "react-router-dom";
 import { getUserData } from "src/helper";
 import axios from "axios";
-import './Header.scss';
+import "./Header.scss";
 import Profile from "../ProfileInfo/Profile";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
-  const navigate = useNavigate()
-  const { setIsModalOpen, isActive, setIsActive } = useContext(modalContext);
+  const navigate = useNavigate();
+  const {
+    setIsModalOpen,
+    isActive,
+    setIsActive,
+    setFilteredItems
+  } = useContext(modalContext);
   const { jwt } = getUserData();
   const [categories, setCategories] = useState([]);
+  const [inputChange, setInputChange] = useState("");
+  const btnRef = useRef();
+  const handleRef = useRef();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const name = searchParams.get("name");
+  console.log(name);
 
+  useEffect(() => {
+    if (name) {
+      setInputChange(name);
+    }
+  }, [name]);
 
+  useEffect(() => {
+    if (inputChange) {
+      const getProducts = async () => {
+        try {
+          const { data } = await axios.get(
+            `${
+              import.meta.env.VITE_APP_STRAPI_BASE_URL
+            }/api/products?filters[name][$containsi]=${inputChange}&populate=*`
+          );
+          setFilteredItems(data.data);
+        } catch (error) {
+          console.error("Error fetching categories:", error);
+        }
+      };
+      getProducts();
+    }
+  }, [inputChange]);
 
   useEffect(() => {
     const getCategories = async () => {
       try {
         const { data } = await axios.get(
-          `${import.meta.env.VITE_APP_STRAPI_BASE_URL
+          `${
+            import.meta.env.VITE_APP_STRAPI_BASE_URL
           }/api/categories?populate=*`
         );
         setCategories(data.data);
@@ -46,11 +82,16 @@ const Header = () => {
   };
 
   const getBasket = () => {
-    navigate("/lenny-basket")
-  }
+    navigate("/lenny-basket");
+  };
 
-  const btnRef = useRef();
-
+  const handleChange = (e) => {
+    e.preventDefault();
+    if (handleRef.current.value !== "") {
+      setInputChange(handleRef.current.value);
+      navigate(`/filter-results/${handleRef.current.value}`);
+    }
+  };
 
   return (
     <div className="big-container">
@@ -64,16 +105,25 @@ const Header = () => {
           <select className="search-sort">
             <option value="default">All Categories</option>
             {categories.map((category) => (
-              <option key={category.id} value={category.attributes.name} onChange={() => (() => { handleCategory(category) })}>
+              <option
+                key={category.id}
+                value={category.attributes.name}
+                onChange={() => () => {
+                  handleCategory(category);
+                }}
+              >
                 {category.attributes.name}
               </option>
             ))}
           </select>
-          <input
-            className="search-text"
-            type="text"
-            placeholder="Search on lenny..."
-          />
+          <form onSubmit={handleChange}>
+            <input
+              className="search-text"
+              type="text"
+              placeholder="Search on lenny..."
+              ref={handleRef}
+            />
+          </form>
           <button className="search-logo">
             <img src={searchIcon} />
           </button>
@@ -82,19 +132,25 @@ const Header = () => {
           <button className="h-basket" onClick={getBasket}>
             <img src={basketIcon} />
           </button>
-          {jwt && <div className="notification-icons">
-            <button><img src={notificationIcon} /></button>
-            <button><img src={smsIcon} /></button>
-          </div>}
+          {jwt && (
+            <div className="notification-icons">
+              <button>
+                <img src={notificationIcon} />
+              </button>
+              <button>
+                <img src={smsIcon} />
+              </button>
+            </div>
+          )}
           <Modal />
           <Profile />
           <button className="h-profile">
-            <img src={profileIcon}
+            <img
+              src={profileIcon}
               ref={btnRef}
               onClick={() => {
-                !jwt ? setIsModalOpen(true) : toggleClassName()
-              }
-              }
+                !jwt ? setIsModalOpen(true) : toggleClassName();
+              }}
             />
           </button>
         </div>

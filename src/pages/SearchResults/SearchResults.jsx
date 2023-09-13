@@ -1,43 +1,56 @@
-import React, { useState, useEffect } from "react";
-import { Pagination as AntPagination } from 'antd';
-import 'src/components/Pagination/Pagination.scss'
+import React, { useState, useEffect, useContext } from "react";
+import { Pagination as AntPagination } from "antd";
+import "src/components/Pagination/Pagination.scss";
 import "src/pages/SearchResults/SearchResults.scss";
 import ProductCart from "src/components/Cart/ProductCart";
 import { Breadcrumb } from "antd";
 import { SelectFilter } from "src/components/Cascader/SelectFilter";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
-
+import { modalContext } from "src/context/ModalProvider";
 
 const SearchResults = () => {
+  const { filteredItems, handleUrl } = useContext(modalContext);
   const catID = useParams().id;
   const [isFavorite, setIsFavorite] = useState(false);
   const [products, setProducts] = useState([]);
   const [data, setData] = useState([]);
   const [current, setCurrent] = useState(1);
+  console.log(filteredItems);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  console.log(data);
+  // const categories = useFetch(
+  //   `${
+  //     import.meta.env.VITE_APP_STRAPI_BASE_URL
+  //   }/api/products?pagination[page]=${current}&pagination[pageSize]=9&populate=*&[filters][categories][id][$eq]=${catID}`
+  // );
 
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const { data } = await axios.get(
-          `${import.meta.env.VITE_APP_STRAPI_BASE_URL}/api/products?pagination[page]=${current}&pagination[pageSize]=9&populate=*&[filters][categories][id][$eq]=${catID}`
-        );
-        setProducts(data.data);
-        setData(data)
+        if (catID) {
+          const { data } = await axios.get(
+            `${
+              import.meta.env.VITE_APP_STRAPI_BASE_URL
+            }/api/products?pagination[page]=${current}&pagination[pageSize]=9&populate=*&[filters][categories][id][$eq]=${catID}`
+          );
+          setProducts(data.data);
+          setData(data);
+        }
       } catch (error) {
         console.error("Error fetching products:", error);
       }
     };
-    getProducts();
-    scrollToTop();
+
+    if (catID) {
+      getProducts();
+      scrollToTop();
+    }
   }, [current, catID]);
+
   const onChange = (page) => {
     setCurrent(page);
   };
@@ -63,27 +76,48 @@ const SearchResults = () => {
           ]}
         />
       </div>
-      <div className="product-info container">
+      {/* <div className="product-info container">
         <div>
           <p>Showing products for {}</p>
         </div>
-      </div>
+      </div> */}
       <div className="filter-and-products">
         <div className="filter-option">
           <h6 className="filter-heading">Filter Option</h6>
           <div className="filter-category">
-            <SelectFilter catID={catID} products={products}/>
+            <SelectFilter />
           </div>
         </div>
         <div className="products-cards">
-          {products.map((product) => (
-            <Link to={`/product-detail/${product.id}`} key={product.id}>
-              <ProductCart product={product} isFavorite={isFavorite} toggleClick={toggleClick} />
-            </Link>
-          ))}
+          {catID &&
+            filteredItems.length === 0 &&
+            products.map((product) => (
+              <ProductCart
+                product={product}
+                isFavorite={isFavorite}
+                toggleClick={toggleClick}
+                key={product.id}
+              />
+            ))}
+          {!catID &&
+            filteredItems.length > 0 &&
+            filteredItems.map((product) => (
+              <ProductCart
+                product={product}
+                isFavorite={isFavorite}
+                toggleClick={toggleClick}
+                key={product.id}
+              />
+            ))}
         </div>
       </div>
-      <div className='pagination'><AntPagination current={current} onChange={onChange} total={data?.meta?.pagination?.total} /></div>
+      <div className="pagination">
+        <AntPagination
+          current={current}
+          onChange={onChange}
+          total={data?.meta?.pagination?.total}
+        />
+      </div>
     </div>
   );
 };
