@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 import { modalContext } from "src/context/ModalProvider";
 
 const SearchResults = () => {
-  const { filteredItems, handleUrl } = useContext(modalContext);
+  const { filteredItems, handleUrl, setHandleUrl } = useContext(modalContext);
   const catID = useParams().id;
   const [isFavorite, setIsFavorite] = useState(false);
   const [products, setProducts] = useState([]);
@@ -21,6 +21,10 @@ const SearchResults = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  const { name } = useParams();
+  setHandleUrl(name);
+
 
   // const categories = useFetch(
   //   `${
@@ -76,11 +80,6 @@ const SearchResults = () => {
           ]}
         />
       </div>
-      {/* <div className="product-info container">
-        <div>
-          <p>Showing products for {}</p>
-        </div>
-      </div> */}
       <div className="filter-and-products">
         <div className="filter-option">
           <h6 className="filter-heading">Filter Option</h6>
