@@ -24,17 +24,13 @@ const Header = () => {
   const [inputChange, setInputChange] = useState("");
   const btnRef = useRef();
   const handleRef = useRef();
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const name = searchParams.get("name");
-  console.log(name);
+ 
 
   useEffect(() => {
     if (handleUrl) {
       setInputChange(handleUrl);
     }
   }, [handleUrl]);
-  console.log(handleUrl);
 
   useEffect(() => {
     if (inputChange) {

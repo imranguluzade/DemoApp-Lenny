@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 import { modalContext } from "src/context/ModalProvider";
 
 const SearchResults = () => {
-  const { filteredItems, handleUrl, setHandleUrl } = useContext(modalContext);
+  const { filteredItems, setHandleUrl } = useContext(modalContext);
   const catID = useParams().id;
   const [isFavorite, setIsFavorite] = useState(false);
   const [products, setProducts] = useState([]);
@@ -24,13 +24,6 @@ const SearchResults = () => {
 
   const { name } = useParams();
   setHandleUrl(name);
-
-
-  // const categories = useFetch(
-  //   `${
-  //     import.meta.env.VITE_APP_STRAPI_BASE_URL
-  //   }/api/products?pagination[page]=${current}&pagination[pageSize]=9&populate=*&[filters][categories][id][$eq]=${catID}`
-  // );
 
   useEffect(() => {
     const getProducts = async () => {
