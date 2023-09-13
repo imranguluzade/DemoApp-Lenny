@@ -13,7 +13,6 @@ import axios from "axios";
 import "./Header.scss";
 import Profile from "../ProfileInfo/Profile";
 import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();

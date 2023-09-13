@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { Breadcrumb } from "antd";
 import star from "src/assets/star.png";
@@ -11,14 +11,23 @@ import Pagination from "src/components/Pagination/Pagination";
 import { Comments } from "src/components/Comments/Comments";
 import { useParams } from "react-router-dom";
 import Progress from "src/components/Progress/Progress";
+import { modalContext } from "../../context/ModalProvider";
 
-const ProductDetail = ({ addToBasket }) => {
+
+const ProductDetail = () => {
   const id = useParams().id
   const [product, setProduct] = useState({});
+  const { setBasketProducts, basketProducts } =
+    useContext(modalContext);
+    console.log(basketProducts);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  const addToBasket = (product) => {
+    setBasketProducts([...basketProducts, product]);
+  }
 
 
   useEffect(() => {
@@ -99,10 +108,7 @@ const ProductDetail = ({ addToBasket }) => {
             <Button text="Buy Now" variant="fill" size="lg" />
             <Button text="Add to Basket" variant="outline" size="lg"
               action={() => {
-                addToBasket({
-                  ...product
-                }
-                )
+                addToBasket(product)
               }} />
           </div>
         </div>
