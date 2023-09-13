@@ -31,7 +31,6 @@ const Header = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const name = searchParams.get("name");
-  console.log(name);
 
   useEffect(() => {
     if (name) {

@@ -6,7 +6,7 @@ import { getUserData } from "src/helper";
 import { Checkbox } from 'antd';
 
 const Basket = () => {
-    const { isLogin, setIsLogin, setIsModalOpen } = useContext(modalContext);
+    const { setIsLogin, setIsModalOpen } = useContext(modalContext);
     const { jwt } = getUserData();
     const handleLogin = () => {
         setIsModalOpen(true);

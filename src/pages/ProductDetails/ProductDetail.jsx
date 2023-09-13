@@ -12,7 +12,7 @@ import { Comments } from "src/components/Comments/Comments";
 import { useParams } from "react-router-dom";
 import Progress from "src/components/Progress/Progress";
 
-const ProductDetail = () => {
+const ProductDetail = ({ addToBasket }) => {
   const id = useParams().id
   const [product, setProduct] = useState({});
 
@@ -97,7 +97,13 @@ const ProductDetail = () => {
           </div>
           <div className="button-box">
             <Button text="Buy Now" variant="fill" size="lg" />
-            <Button text="Add to Chart" variant="outline" size="lg" />
+            <Button text="Add to Basket" variant="outline" size="lg"
+              action={() => {
+                addToBasket({
+                  ...product
+                }
+                )
+              }} />
           </div>
         </div>
       </div>
@@ -105,7 +111,7 @@ const ProductDetail = () => {
         <Tabs />
       </div>
       <div className="container">
-        <Progress/>
+        <Progress />
         <Comments />
         <Pagination />
       </div>
