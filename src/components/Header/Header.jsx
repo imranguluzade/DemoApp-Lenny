@@ -13,31 +13,24 @@ import axios from "axios";
 import "./Header.scss";
 import Profile from "../ProfileInfo/Profile";
 import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();
-  const {
-    setIsModalOpen,
-    isActive,
-    setIsActive,
-    setFilteredItems
-  } = useContext(modalContext);
+  const { setIsModalOpen, isActive, setIsActive, setFilteredItems, handleUrl } =
+    useContext(modalContext);
   const { jwt } = getUserData();
   const [categories, setCategories] = useState([]);
   const [inputChange, setInputChange] = useState("");
   const btnRef = useRef();
   const handleRef = useRef();
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const name = searchParams.get("name");
-  console.log(name);
 
   useEffect(() => {
-    if (name) {
-      setInputChange(name);
+    if (handleUrl) {
+      setInputChange(handleUrl);
     }
-  }, [name]);
+  }, [handleUrl]);
+  console.log(handleUrl);
 
   useEffect(() => {
     if (inputChange) {
