@@ -18,6 +18,7 @@ const Basket = () => {
     setIsLogin(true);
   };
 
+
   const handleSignUp = () => {
     setIsModalOpen(true);
     setIsLogin(false);

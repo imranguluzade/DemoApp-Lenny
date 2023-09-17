@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { Breadcrumb } from "antd";
 import star from "src/assets/star.png";
 import Button from "../../components/Button/Button";
-import RelatedProducts from "../../components/RelatedProducts/RelatedProducts";
 import ProductGallery from "../../components/Slider/ProductGallery";
 import Tabs from "../../components/Tabs/Tabs";
 import "./ProductDetails.scss";
-import Pagination from "src/components/Pagination/Pagination";
 import { Comments } from "src/components/Comments/Comments";
 import { useParams } from "react-router-dom";
 import Progress from "src/components/Progress/Progress";
@@ -19,10 +17,10 @@ const ProductDetail = () => {
   const [product, setProduct] = useState({});
   const dispatch = useDispatch();
 
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -127,9 +125,7 @@ const ProductDetail = () => {
       <div className="container">
         <Progress />
         <Comments />
-        {/* <Pagination /> */}
       </div>
-      {/* <RelatedProducts /> */}
     </div>
   );
 };

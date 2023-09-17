@@ -26,12 +26,12 @@ const Header = () => {
   const handleRef = useRef();
   const basketProducts = useSelector((state) => state.basket.products);
 
+
   useEffect(() => {
     if (handleUrl) {
       setInputChange(handleUrl);
     }
   }, [handleUrl]);
-  console.log(handleUrl);
 
   useEffect(() => {
     if (inputChange) {

@@ -8,6 +8,7 @@ const ModalProvider = ({ children }) => {
   const [isActive, setIsActive] = useState(false);
   const [filteredItems, setFilteredItems] = useState([]);
   const [handleUrl, setHandleUrl] = useState("");
+  const [basketProducts, setBasketProducts] = useState([]);
 
   const globalState = {
     isModalOpen,
@@ -20,6 +21,8 @@ const ModalProvider = ({ children }) => {
     setFilteredItems,
     handleUrl,
     setHandleUrl,
+    basketProducts,
+    setBasketProducts
   };
 
   return (
