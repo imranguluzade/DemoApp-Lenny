@@ -13,7 +13,7 @@ import axios from "axios";
 import "./Header.scss";
 import Profile from "../ProfileInfo/Profile";
 import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -24,6 +24,7 @@ const Header = () => {
   const [inputChange, setInputChange] = useState("");
   const btnRef = useRef();
   const handleRef = useRef();
+  const basketProducts = useSelector((state) => state.basket.products);
 
   useEffect(() => {
     if (handleUrl) {
@@ -124,6 +125,9 @@ const Header = () => {
         <div className="pp-basket">
           <button className="h-basket" onClick={getBasket}>
             <img src={basketIcon} />
+            <div>
+              <span>{basketProducts.length}</span>
+            </div>
           </button>
           {jwt && (
             <div className="notification-icons">

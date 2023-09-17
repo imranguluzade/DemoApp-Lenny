@@ -78,7 +78,8 @@ button {
   .basket-products {
     width: 788px;
     background-color: white;
-    height: 120px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     border: 1px solid $dgray300;
     border-radius: 12px;
   }
@@ -87,6 +88,20 @@ button {
     background-color: white;
     border: 1px solid $dgray300;
     border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    .total-price{
+      display: flex;
+      justify-content: space-between;
+      h6{
+        @include h6;
+      }
+      span{
+        @include h6
+      }
+    }
   }
 }
 
@@ -97,6 +112,11 @@ button {
 .basket-product-card {
   @include d-flex(row, space-between, center);
   padding: 25px;
+  border-bottom: 1px solid $dgray300;
+  img {
+    width: 100px;
+    height: 100px;
+  }
 }
 
 .product-info {
@@ -106,6 +126,10 @@ button {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    span {
+      color: $primary100;
+      font-weight: 600;
+    }
   }
 }
 

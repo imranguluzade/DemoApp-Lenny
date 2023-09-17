@@ -121,6 +121,24 @@ form {
   background-color: transparent;
   border: 0px;
   cursor: pointer;
+  display: flex;
+  flex-direction: column-reverse;
+  position: relative;
+  div {
+    position: absolute;
+    background-color: #e04124;
+    top: -10px;
+    left: 20px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    @include d-flex;
+    span{
+      color: white;
+      font-weight: 500;
+      font-size: 12px;
+    }
+  }
 }
 
 .notification-icons {

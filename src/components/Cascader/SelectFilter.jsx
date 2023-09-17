@@ -4,7 +4,7 @@ import "./Cascader.scss";
 import { Checkbox } from "antd";
 import { useNavigate } from "react-router-dom";
 
-export const SelectFilter = ({ catID, products }) => {
+export const SelectFilter = () => {
   const [data, setData] = useState([]);
   const [checkedCategoryId, setCheckedCategoryId] = useState(null);
   const navigate = useNavigate();

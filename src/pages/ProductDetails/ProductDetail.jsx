@@ -6,34 +6,40 @@ import Button from "../../components/Button/Button";
 import RelatedProducts from "../../components/RelatedProducts/RelatedProducts";
 import ProductGallery from "../../components/Slider/ProductGallery";
 import Tabs from "../../components/Tabs/Tabs";
-import './ProductDetails.scss'
+import "./ProductDetails.scss";
 import Pagination from "src/components/Pagination/Pagination";
 import { Comments } from "src/components/Comments/Comments";
 import { useParams } from "react-router-dom";
 import Progress from "src/components/Progress/Progress";
+import { useDispatch } from "react-redux";
+import { addToBasket } from "src/redux/reducers/basketReducer";
 
 const ProductDetail = () => {
-  const id = useParams().id
+  const id = useParams().id;
   const [product, setProduct] = useState({});
+  const dispatch = useDispatch();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-
 
   useEffect(() => {
     const fetchCategories = async () => {
       try {
         const {
           data: { data },
-        } = await axios.get(`${import.meta.env.VITE_APP_STRAPI_BASE_URL}/api/products?populate=*&filters[id][$in][0]=${id}`);
+        } = await axios.get(
+          `${
+            import.meta.env.VITE_APP_STRAPI_BASE_URL
+          }/api/products?populate=*&filters[id][$in][0]=${id}`
+        );
         setProduct(data);
       } catch (error) {
         console.log(error);
       }
     };
     if (id) {
-      fetchCategories()
+      fetchCategories();
     }
     scrollToTop();
   }, [id]);
@@ -97,7 +103,21 @@ const ProductDetail = () => {
           </div>
           <div className="button-box">
             <Button text="Buy Now" variant="fill" size="lg" />
-            <Button text="Add to Chart" variant="outline" size="lg" />
+            <Button
+              action={() =>
+                dispatch(
+                  addToBasket({
+                    id: product[0].id,
+                    title: product[0].attributes.name,
+                    price: product[0].attributes.price,
+                    img: product[0].attributes.thumbnail.data.attributes.url,
+                  })
+                )
+              }
+              text="Add to Chart"
+              variant="outline"
+              size="lg"
+            />
           </div>
         </div>
       </div>
@@ -105,11 +125,11 @@ const ProductDetail = () => {
         <Tabs />
       </div>
       <div className="container">
-        <Progress/>
+        <Progress />
         <Comments />
-        <Pagination />
+        {/* <Pagination /> */}
       </div>
-      <RelatedProducts />
+      {/* <RelatedProducts /> */}
     </div>
   );
 };

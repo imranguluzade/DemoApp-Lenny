@@ -28,11 +28,11 @@ button {
 .filter-and-products {
   @include d-flex(row, center, flex-start);
   gap: 40px;
-  margin-top: 52px;
+  margin-top: 0px;
 }
 
 .pop-products {
-  padding-top: 60px !important;
+  padding-top: 10px !important;
 }
 
 .products-cards {
@@ -61,6 +61,10 @@ button {
 .ant-menu-title-content {
   margin-left: 0px !important;
   @include h3-xs;
+}
+
+.bread-crumb{
+  @include d-flex (row, space-between, center);
 }
 
 ul li ul li div span{
